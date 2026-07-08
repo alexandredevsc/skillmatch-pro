@@ -59,10 +59,13 @@
     <!-- ========================================= -->
 
     <header class="site-header">
-      <nav class="navbar container" aria-label="Menu Principal">
-        <a href="#" class="logo" aria-label="SkillMatch Pro">
-          <span class="logo-icon">S</span>
-          <span>SkillMatch Pro</span>
+      <nav class="container navbar" aria-label="Menu principal">
+        <a href="#inicio" class="brand" aria-label="SkillMatch Pro - Início">
+          <img
+            src="./assets/img/logo/logo-skillmatch.png"
+            alt="Logo SkillMatch Pro"
+            class="brand-logo"
+          />
         </a>
 
         <ul class="nav-menu">
@@ -77,14 +80,98 @@
           <button
             id="themeToggle"
             class="theme-toggle"
-            aria-label="Alternar tema"
+            type="button"
+            aria-label="Alternar tema claro e escuro"
           >
-            🌙
+            <span>☀️</span>
+            <span>🌙</span>
           </button>
 
-          <a href="#perfil" class="btn btn-primary"> Analisar meu perfil </a>
+          <a href="#perfil" class="btn btn-primary">Analisar meu perfil</a>
         </div>
       </nav>
     </header>
+
+    <!-- ========================================= -->
+    <!-- CONTEÚDO PRINCIPAL -->
+    <!-- ========================================= -->
+
+    <main>
+      <!-- ========================================= -->
+      <!-- HERO -->
+      <!-- ========================================= -->
+
+      <section id="inicio" class="hero-section">
+        <div class="container hero-grid">
+          <article class="hero-content">
+            <span class="hero-badge">
+              Inteligência que conecta talentos às melhores oportunidades
+            </span>
+
+            <h1>
+              Descubra sua
+              <span>Vaga ideal</span>
+              com inteligência
+            </h1>
+
+            <p>
+              Analisamos suas habilidades, experiência e perfil apra conextar
+              você às melhores oportunidades do mercado de tecnologia.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#perfil" class="btn btn-primary"
+                >Começar agora grátis
+              </a>
+              <a href="#vagas" class="btn btn-outline">Ver vagas </a>
+            </div>
+
+            <ul class="hero-benefits">
+              <li>100% Gratuito</li>
+              <li>Análise inteligente</li>
+              <li>Resultado instantâneos</li>
+              <li>Seguro e privado</li>
+            </ul>
+          </article>
+
+          <article
+            class="hero-visual"
+            aria-label="Imagem principal da plataforma"
+          >
+            <img
+              src="./assets/img/hero/neon-ring.png"
+              alt=""
+              class="neon-ring"
+            />
+            <img
+              src="./assets/img/hero/icon-user.png"
+              alt=""
+              class="hero-icon hero-icon-user"
+            />
+            <img
+              src="./assets/img/hero/icon-target.png"
+              alt=""
+              class="hero-icon hero-icon-target"
+            />
+
+            <aside class="hero-stat hero-stat-one">
+              <span>Vagas encontradas</span>
+              <strong>1.248</strong>
+            </aside>
+
+            <aside class="hero-stat hero-stat-two">
+              <span>Empresas parceiras</span>
+              <strong>356</strong>
+            </aside>
+
+            <aside class="hero-stat hero-stat-three">
+              <span>Usuários ativos</span>
+              <strong>12.530</strong>
+            </aside>
+          </article>
+        </div>
+        
+      </section>
+    </main>
   </body>
 </html>
