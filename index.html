@@ -83,11 +83,13 @@
             type="button"
             aria-label="Alternar tema claro e escuro"
           >
-            <span>☀️</span>
-            <span>🌙</span>
+            <span aria-hidden="true">☀️</span>
+            <span aria-hidden="true">🌙</span>
           </button>
 
-          <a href="#perfil" class="btn btn-primary">Analisar meu perfil</a>
+          <a href="#perfil" class="btn btn-primary">
+            Analisar meu perfil
+          </a>
         </div>
       </nav>
     </header>
@@ -110,44 +112,55 @@
 
             <h1>
               Descubra sua
-              <span>Vaga ideal</span>
-              com inteligência
+              <span>vaga ideal</span>
+              com inteligência.
             </h1>
 
             <p>
-              Analisamos suas habilidades, experiência e perfil apra conextar
+              Analisamos suas habilidades, experiência e perfil para conectar
               você às melhores oportunidades do mercado de tecnologia.
             </p>
 
             <div class="hero-actions">
-              <a href="#perfil" class="btn btn-primary"
-                >Começar agora grátis
+              <a href="#perfil" class="btn btn-primary">
+                Começar agora grátis
               </a>
-              <a href="#vagas" class="btn btn-outline">Ver vagas </a>
+
+              <a href="#vagas" class="btn btn-outline">
+                Ver vagas
+              </a>
             </div>
 
             <ul class="hero-benefits">
-              <li>100% Gratuito</li>
+              <li>100% gratuito</li>
               <li>Análise inteligente</li>
-              <li>Resultado instantâneos</li>
+              <li>Resultados instantâneos</li>
               <li>Seguro e privado</li>
             </ul>
           </article>
 
           <article
             class="hero-visual"
-            aria-label="Imagem principal da plataforma"
+            aria-label="Apresentação visual da plataforma SkillMatch Pro"
           >
             <img
               src="./assets/img/hero/neon-ring.png"
               alt=""
-              class="neon-ring"
+              class="hero-ring"
             />
+
+            <img
+              src="./assets/img/hero/notebook.png"
+              alt="Notebook exibindo o painel de compatibilidade do SkillMatch Pro"
+              class="hero-notebook"
+            />
+
             <img
               src="./assets/img/hero/icon-user.png"
               alt=""
               class="hero-icon hero-icon-user"
             />
+
             <img
               src="./assets/img/hero/icon-target.png"
               alt=""
@@ -172,148 +185,275 @@
         </div>
       </section>
 
-      <!-- ========================================= --> 
-      <!-- COMO FUNCIONA -->          
-      <!-- ========================================= -->  
-       <section id="como-funciona" class="steps-section">
+      <!-- ========================================= -->
+      <!-- COMO FUNCIONA -->
+      <!-- ========================================= -->
+
+      <section id="como-funciona" class="steps-section">
         <div class="container">
-         <header class="section-header">
-          <span>Como funciona</span>
-          <h2>Simples, rápido e inteligente</h2>
-          <p>3 passos para encontrar sua vaga ideal</p>
-         </header>
+          <header class="section-header">
+            <span>Como funciona</span>
+            <h2>Simples, rápido e inteligente</h2>
+            <p>3 passos para encontrar sua vaga ideal</p>
+          </header>
 
-         <div class="steps-grid">
-          <article class="step-card">
-            <img src="./assets/img/steps/clipboard.png" alt="" />
-            <span>1</span>
-            <h3>Inforeme seu perfil</h3>
-            <p>Preencha suas habilidades, experiência e preferências.</p>
-          </article>
+          <div class="steps-grid">
+            <article class="step-card">
+              <img
+                src="./assets/img/steps/clipboard.png"
+                alt=""
+              />
 
-          <article class="step-card">
-            <img src="./assets/img/steps/brain.png" alt="" />
-            <span>2</span>
-            <h3>Analisamos tudo</h3>
-            <p>Nossa análise compara seu perfil com milhares de vagas.</p>
-          </article>
+              <span class="step-number">1</span>
 
-          <article class="step-card">
-            <img src="./assets/img/steps/target.png" alt="" />
-            <span>3</span>
-            <h3>Receba as melhores vagas</h3>
-            <p>Veja sua compatibilidade e recomendações personalizadas.</p>
-          </article>
-         </div>
+              <h3>Informe seu perfil</h3>
+
+              <p>
+                Preencha suas habilidades, experiência e preferências.
+              </p>
+            </article>
+
+            <article class="step-card">
+              <img
+                src="./assets/img/steps/brain.png"
+                alt=""
+              />
+
+              <span class="step-number">2</span>
+
+              <h3>Analisamos tudo</h3>
+
+              <p>
+                Nossa análise compara seu perfil com milhares de vagas.
+              </p>
+            </article>
+
+            <article class="step-card">
+              <img
+                src="./assets/img/steps/target.png"
+                alt=""
+              />
+
+              <span class="step-number">3</span>
+
+              <h3>Receba as melhores vagas</h3>
+
+              <p>
+                Veja sua compatibilidade e recomendações personalizadas.
+              </p>
+            </article>
+          </div>
         </div>
-       </section>
-          
-      <!-- ========================================= --> 
-      <!-- PERFIL + MELHOR COMPATIBILIDADE -->        
-      <!-- ========================================= -->    
-             <section id="perfil" class="analysis-section">
-              <div class="container analysis-grid">
+      </section>
 
-                <!--CARD DO FORMULÁRIO-->
-                <article class="profile-card">
-                  <header class = "card-heading">
-                    <span>Análise personalizada</span>
-                    <h2>Seu Perfil</h2>
-                    <p>
-                      Preencha suas informações para o SkillMatch Pro comparar suas
-                      habilidades com as vagas disponíveis.
-                    </p>
-                  </header>
+      <!-- ========================================= -->
+      <!-- PERFIL + MELHOR COMPATIBILIDADE -->
+      <!-- ========================================= -->
 
-                  <form id="profileForm" class="profile-form">
-                    <label for="name">Nome completo</label>
-                    <input
-                      id="nome"
-                      name="nome"
-                      placeholder="Ex: Alexandre Milton Alves"
-                      required
-                    />
+      <section id="perfil" class="analysis-section">
+        <div class="container analysis-grid">
+          <!-- CARD DO FORMULÁRIO -->
 
-                    <label for = "area">Área de atuação</label>
-                    <select id="area" name="area" required>
-                      <option value="">Selecione sua área</option>
-                      <option value="front-end">Desenvolvimento Front-End</option>
-                      <option value="ui-ux">UI/UX Design</option>
-                      <option value="fullstack">Full Stack</option>
-                    </select>
+          <article class="profile-card">
+            <header class="card-heading">
+              <span>Análise personalizada</span>
 
-                    <label for="experiencia">Experiência em meses</label>
-                    <input
-                      id="experiencia"
-                      name="experiencia"
-                      type="number"
-                      min="0"
-                      placeholder="Ex: 6"
-                      required
-                    />
+              <h2>Seu perfil</h2>
 
-                    <label for="habilidades">Habilidades</label>
-                  
-                    <input
-                      id="habilidades"
-                      name="habilidades"
-                      type="text"
-                      placeholder="HTML, CSS, JavaScript, Git"
-                      required
-                    />
+              <p>
+                Preencha suas informações para o SkillMatch Pro comparar suas
+                habilidades com as vagas disponíveis.
+              </p>
+            </header>
 
-                    <button type="submit" class="btn btn-primary">
-                      Analisar compatibilidade
-                    </button>
+            <form id="profileForm" class="profile-form">
+              <label for="nome">Nome completo</label>
 
-                    <p id="formMessage" class="form-message" aria-live="polite">
-                      Seus dados serão salvos automaticamente no navegador.
-                    </p>
-                  </form>
-                </article>
+              <input
+                id="nome"
+                name="nome"
+                type="text"
+                placeholder="Ex: Alexandre Milton Alves"
+                required
+              />
 
-                <!--CARD DE MELHOR COMPATIBILIDADE-->
-                <article id="bestMatch" class="best-match-card">
-                  <header class="card-heading">
-                    <span>Resultado principal</span>
-                    <h2>Melhor compatibilidade</h2>
-                    <p>
-                      Após a análise, este card mostrará a vaga mais compatível com o 
-                      seu perfil.
-                    </p>
-                  </header>
+              <label for="area">Área de atuação</label>
 
-                  <div class="match-preview">
-                    <div class="match-circle">
-                      <strong>96%</strong>
-                      <span>Compatibilidade excelente</span>
-                    </div>
+              <select id="area" name="area" required>
+                <option value="">Selecione sua área</option>
+                <option value="front-end">Desenvolvimento Front-End</option>
+                <option value="ui-ux">UI/UX Design</option>
+                <option value="fullstack">Full Stack</option>
+              </select>
 
-                    <div class="match-info">
-                      <h3>Desenvolvedor Front-End Júnior</h3>
-                      <p>Tech Solutions • Florianópolis, SC • Híbrido</p>
+              <label for="experiencia">
+                Experiência em meses
+              </label>
 
-                      <h4>Habilidades encontradas</h4>
-                      <div class="tags tags-success">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>JavaScript</span>
-                        <span>Git</span>
-                      </div>
+              <input
+                id="experiencia"
+                name="experiencia"
+                type="number"
+                min="0"
+                placeholder="Ex: 6"
+                required
+              />
 
-                      <h4>Habilidades para evoluir</h4>
-                      <div class="tags tags-warning">
-                        <span>React</span>
-                        <span>TypeScript</span>
-                        <span>Testes</span>
-                      </div>
-                    </div>
-                  </div>
-                </article>
+              <label for="habilidades">Habilidades</label>
+
+              <input
+                id="habilidades"
+                name="habilidades"
+                type="text"
+                placeholder="HTML, CSS, JavaScript, Git"
+                required
+              />
+
+              <button type="submit" class="btn btn-primary">
+                Analisar compatibilidade
+              </button>
+
+              <p
+                id="formMessage"
+                class="form-message"
+                aria-live="polite"
+              >
+                Seus dados serão salvos automaticamente no navegador.
+              </p>
+            </form>
+          </article>
+
+          <!-- CARD DE MELHOR COMPATIBILIDADE -->
+
+          <article id="bestMatch" class="best-match-card">
+            <header class="card-heading">
+              <span>Resultado principal</span>
+
+              <h2>Melhor compatibilidade</h2>
+
+              <p>
+                Após a análise, este card mostrará a vaga mais compatível com o
+                seu perfil.
+              </p>
+            </header>
+
+            <div class="match-preview">
+              <div class="match-circle">
+                <strong>96%</strong>
+                <span>Compatibilidade excelente</span>
               </div>
-             </section>
-           </header>
-         </div>
+
+              <div class="match-info">
+                <h3>Desenvolvedor Front-End Júnior</h3>
+
+                <p>
+                  Tech Solutions • Florianópolis, SC • Híbrido
+                </p>
+
+                <h4>Habilidades encontradas</h4>
+
+                <div class="tags tags-success">
+                  <span>HTML</span>
+                  <span>CSS</span>
+                  <span>JavaScript</span>
+                  <span>Git</span>
+                </div>
+
+                <h4>Habilidades para evoluir</h4>
+
+                <div class="tags tags-warning">
+                  <span>React</span>
+                  <span>TypeScript</span>
+                  <span>Testes</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ========================================= -->
+      <!-- OUTRAS VAGAS -->
+      <!-- ========================================= -->
+
+      <section id="vagas" class="jobs-section">
+        <div class="container">
+          <header class="section-header">
+            <span>Oportunidades</span>
+
+            <h2>Outras vagas para você</h2>
+
+            <p>
+              As vagas abaixo serão carregadas dinamicamente pelo JavaScript.
+            </p>
+          </header>
+
+          <!-- FILTROS -->
+
+          <div class="jobs-filter" aria-label="Filtros de vagas">
+            <button
+              class="filter-btn active"
+              type="button"
+              data-filter="todas"
+            >
+              Todas
+            </button>
+
+            <button
+              class="filter-btn"
+              type="button"
+              data-filter="front-end"
+            >
+              Front-End
+            </button>
+
+            <button
+              class="filter-btn"
+              type="button"
+              data-filter="ui-ux"
+            >
+              UI/UX
+            </button>
+
+            <button
+              class="filter-btn"
+              type="button"
+              data-filter="fullstack"
+            >
+              Full Stack
+            </button>
+          </div>
+
+          <!-- MENSAGEM DE ESTADO -->
+
+          <p
+            id="jobsStatus"
+            class="jobs-status"
+            aria-live="polite"
+          >
+            As vagas serão exibidas após a análise do perfil.
+          </p>
+
+          <!-- GRID DAS VAGAS -->
+
+          <div id="jobsContainer" class="jobs-grid">
+            <!--
+              Os cards serão criados dinamicamente
+              pelo arquivo ui.js utilizando
+              document.createElement().
+            -->
+          </div>
+        </div>
+      </section>
     </main>
+
+    <!-- ========================================= -->
+    <!-- JAVASCRIPT PRINCIPAL -->
+    <!-- ========================================= -->
+
+    <script
+      type="module"
+      src="./assets/scripts/main.js"
+    ></script>
   </body>
 </html>
