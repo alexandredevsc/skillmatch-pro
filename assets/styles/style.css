@@ -1,0 +1,1077 @@
+/* =========================================================
+   SKILLMATCH PRO
+   ESTILOS PRINCIPAIS
+   ========================================================= */
+
+/* =========================================================
+   1. DESIGN SYSTEM
+
+   As variáveis guardam cores, fontes, medidas e efeitos.
+   Assim, conseguimos alterar o visual do projeto em um único
+   lugar, sem procurar valores espalhados pelo arquivo.
+   ========================================================= */
+
+:root {
+   --color-bg: #030615;
+   --color-bg-soft: #070b1d;
+   --color-primary: #1685ff;
+   --color-secondary: #8b4dff;
+   --color-cyan: #12d9ff;
+   --color-text: #ffffff;
+   --color-text-muted: #aab4ca;
+   --gradient-primary: linear-gradient(110deg, #087cff 0%, #5368ff 52%, #9b43ff 100%);
+   --font-body: "Inter", sans-serif;
+   --font-title: "Poppins", sans-serif;
+   --container: 118rem;
+   --header-height: 4.75rem;
+}
+
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+}
+
+html {
+   scroll-behavior: smooth;
+   scroll-padding-top: var(--header-height);
+}
+
+body {
+   margin: 0;
+   min-width: 20rem;
+   color: var(--color-text);
+   background: var(--color-bg);
+   font-family: var(--font-body);
+   line-height: 1.5;
+   -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+p,
+ul {
+   margin-top: 0;
+}
+
+h1,
+h2,
+h3 {
+   font-family: var(--font-title);
+}
+
+ul {
+   margin-bottom: 0;
+   padding: 0;
+   list-style: none;
+}
+
+a {
+   color: inherit;
+   text-decoration: none;
+}
+
+button,
+input,
+select {
+   font: inherit;
+}
+
+img {
+   display: block;
+   max-width: 100%;
+}
+
+:focus-visible {
+   outline: 0.2rem solid var(--color-cyan);
+   outline-offset: 0.25rem;
+}
+
+.container {
+   width: min(calc(100% - 3rem), var(--container));
+   margin-inline: auto;
+}
+
+.btn {
+   display: inline-flex;
+   min-height: 3rem;
+   align-items: center;
+   justify-content: center;
+   padding: 0.75rem 1.55rem;
+   border: 1px solid transparent;
+   border-radius: 0.8rem;
+   font-size: 0.88rem;
+   font-weight: 700;
+   white-space: nowrap;
+   cursor: pointer;
+   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.btn:hover {
+   transform: translateY(-0.125rem);
+}
+
+.btn-primary {
+   color: #ffffff;
+   background: var(--gradient-primary);
+   box-shadow: 0 0.65rem 1.75rem rgba(88, 74, 255, 0.34);
+}
+
+.btn-outline {
+   color: #ffffff;
+   border-color: rgba(162, 132, 255, 0.72);
+   background: rgba(7, 11, 29, 0.48);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.site-header {
+
+   /*Deixa o header fixo no topo da tela, mesmo quando o usuário rolar a página.*/
+   position: fixed;
+
+   /*O header ocupar toda a largura da tela e fica preso ao topo.*/
+   inset: 0 0 auto 0;
+
+   /*O header fica por cima dos outros elementos da página.*/
+   z-index: 1000;
+
+   /*Cria um espaco entre o header e o conteúdo da página.*/
+   padding: 1.25rem 0;
+
+   /*Aplica um efeito de vidro (Glassmorphism). O conteúdo atrás do header fica desfocado.*/
+   backdrop-filter: blur(18px);
+
+   /*cor de fundo semi-transparente. rgba = Red Green Blue Alpha(transparencia)*/
+   background: rgba(5, 8, 22, 0.55);
+
+   /*linha bem discreta na parte inferiosr do header*/
+   border-bottom: 1px solid rgba(255, 255, 255, .05);
+}
+
+
+/* =========================================================
+   NAVBAR
+   Organiza logo, menu e botões.
+   ========================================================= */
+
+.navbar {
+   /*Ativa o flexbox*/
+   display: flex;
+
+   /*Alinha todo os itens verticalmente no centro.*/
+   align-items: center;
+
+   /*Coloca um elemento na esquerda, outro no centro e outro na direita.*/
+   justify-content: space-between;
+}
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.brand {
+   /*Também usa Flexbox, caso a logo tenha texto ao lado futuramente.*/
+   display: flex;
+
+   /*Centraliza verticalmente os elementos internos*/
+   align-items: center;
+
+}
+
+/* =========================================================
+   IMAGEM DA LOGO
+   ========================================================= */
+.brand-logo {
+   /*Define largura fixa da logo. A altura será ajustada automaticamente para manter a proporção*/
+   width: 210px;
+}
+
+
+/* =========================================================
+   MENU DE NAVEGAÇÃO
+   ========================================================= */
+.nav-menu {
+   /*Os links ficam um ao lado do outro*/
+   display: flex;
+
+   /*Espaçamento entre cada item do menu*/
+   gap: 2.2rem;
+}
+
+/* =========================================================
+   LINKS DO MENU
+   ========================================================= */
+.nav-menu a {
+   /*Permite posicionar elementos filhos usando position: absolute, com a linha azul do hover*/
+   position: relative;
+
+   /*Cor branca dos links*/
+   color: #ffffff;
+
+   /*peso da fonte (semibold)*/
+   font-weight: 600;
+
+   /*Toda mudança ocorrerá suavemente em 0,3 segundos*/
+   transition: .3s;
+}
+
+/* =========================================================
+   Efeito ao passar o mouse 
+   ========================================================= */
+.nav-menu a:hover {
+   /*Muda a cor do texto para azul claro*/
+   color: #60A5FA;
+}
+
+/* =========================================================
+   Linha azul abaixo do link
+   ========================================================= */
+.nav-menu a::after {
+   /* Cria um pseudo-elemento vazio.
+      Ele será a barrinha azul. */
+   content: "";
+
+   /*Posicionamento absoluto em relação ao link.*/
+   position: absolute;
+
+   /*Começa na esquerda  do Link.*/
+   left: 0;
+
+   /*fica 8px abaixo do texto*/
+   bottom: -8px;
+
+   /*Inicialmente sem largura. Assim ela "nasce" no hover.*/
+   width: 0;
+
+   /*Espessura da linha*/
+   height: 2px;
+
+   /*Cor azul da barra*/
+   background: #2563EB;
+
+   /*Faz a linha crescer suavemente.*/
+   transition: .3s;
+
+}
+
+/* =========================================================
+   Hover da barrinha
+   ========================================================= */
+.nav-menu a:hover::after {
+   /*A linha cresce até ocupar toda a largura do texto*/
+   width: 100%;
+}
+
+/* =========================================================
+   BOTÕES DA DIREITA
+   ========================================================= */
+   .nav-actions {
+      /*Coloca botão do tema  e botão principal  lado a lado*/
+      display: flex;
+
+      /*Espaço entre eles*/
+      gap: 1rem;
+
+      /*Centraliza verticalmente*/
+      align-items: center;
+   }
+
+   /* Ajustes finais do cabeçalho conforme o mockup. */
+   .site-header {
+      min-height: var(--header-height);
+      padding: 0.45rem 0;
+      background: rgba(3, 6, 21, 0.78);
+      border-bottom-color: rgba(255, 255, 255, 0.045);
+   }
+
+   .navbar {
+      min-height: 3.6rem;
+      gap: 2rem;
+   }
+
+   .brand {
+      flex: 0 0 auto;
+   }
+
+   .brand-logo {
+      width: clamp(17rem, 21vw, 25rem);
+      height: auto;
+      margin-left: -7rem;
+   }
+
+   .nav-menu {
+      align-items: center;
+      gap: clamp(1.3rem, 2.1vw, 2.35rem);
+   }
+
+   .nav-menu a {
+      font-size: 0.82rem;
+   }
+
+   .nav-menu a.active,
+   .nav-menu a[aria-current="page"],
+   .nav-menu li:first-child a {
+      color: #2e9bff;
+   }
+
+   .nav-menu a.active::after,
+   .nav-menu a[aria-current="page"]::after,
+   .nav-menu li:first-child a::after {
+      width: 100%;
+   }
+
+   .nav-actions .btn {
+      min-height: 2.85rem;
+      padding-inline: 1.4rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+   }
+
+   .theme-toggle {
+      display: inline-flex;
+      width: 3.5rem;
+      height: 2rem;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0.2rem 0.3rem;
+      color: #cbd5e1;
+      border: 1px solid rgba(148, 163, 184, 0.48);
+      border-radius: 999px;
+      background: rgba(13, 20, 42, 0.82);
+      cursor: pointer;
+   }
+
+   .theme-toggle span {
+      font-size: 0.7rem;
+      line-height: 1;
+   }
+
+   .theme-toggle span:last-child {
+      display: grid;
+      width: 1.15rem;
+      height: 1.15rem;
+      place-items: center;
+      border-radius: 50%;
+      background: #f8fafc;
+      font-size: 0;
+      box-shadow: 0 0 0.8rem rgba(255, 255, 255, 0.28);
+   }
+
+   @media (max-width: 64rem) {
+      .nav-menu {
+         gap: 1.15rem;
+      }
+
+      .nav-menu a {
+         font-size: 0.75rem;
+      }
+
+      .nav-actions .btn {
+         padding-inline: 1rem;
+      }
+   }
+
+   @media (max-width: 52rem) {
+      .site-header {
+         position: absolute;
+      }
+
+      .navbar {
+         flex-wrap: wrap;
+         gap: 0.75rem;
+      }
+
+      .brand-logo {
+         width: 10.5rem;
+         margin-left: 0;
+      }
+
+      .nav-menu {
+         order: 3;
+         width: 100%;
+         justify-content: center;
+         overflow-x: auto;
+         padding-block: 0.35rem;
+      }
+
+      .nav-actions .btn {
+         display: none;
+      }
+   }
+
+   @media (max-width: 36rem) {
+      .container {
+         width: min(calc(100% - 2rem), var(--container));
+      }
+
+      .nav-menu {
+         justify-content: flex-start;
+      }
+   }
+
+   /* =========================================================
+   HERO
+   Estrutura principal da primeira dobra da página.
+   O objetivo é conteúdo à esquerda e composição 3D à direita.
+   ========================================================= */
+
+   .hero-section {
+      /*Cria espaço para o header fixo e dá altura visual à seção.*/
+      min-height: 100vh;
+
+      /*Afasta o conteúdo do topo e da próxima seção.*/
+      padding: 10rem 0 7rem;
+
+      /*Permite posicionar efeitos decorativos dentro da seção.*/
+      position: relative;
+
+      /*Esconde elementos decorativos que ultrapassem a área.*/
+      overflow: hidden;
+
+      /*Fundo escuro com luzes radiais, como no mockup.*/
+      background:
+      radial-gradient(
+         circle at 78% 35%,
+         rgba(37, 99, 235, 0.22),
+         transparent 28%
+      ),
+      radial-gradient(
+         circle at 70% 70%,
+         rgba(124, 58, 237, 0.18),
+         transparent 34%
+      ),
+      linear-gradient(
+         180deg,
+         #050816 0%,
+         #070b1d 60%,
+         #0a1026 100%
+      );
+   }
+
+   /* Cria uma textura tecnológica discreta no fundo.*/
+   .hero-section::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 0;
+
+      background-image:
+      linear-gradient(
+         rgba(255, 255, 255, 0.018) 1px,
+         transparent 1px
+      ),
+      lineara-gradient(
+         90deg,
+         rgba(255, 255, 255, 0.018) 1px,
+         transparent 1px
+      );
+
+      background-size: 3rem 3rem;
+
+      opacity: 0.35;
+      pointer-events: none;
+   }
+
+   /*Organiza texto e composição 3D lado a lado.*/
+   .hero-grid {
+   position: relative;
+   z-index: 1;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   gap: 4rem;
+   }
+
+   /*Coluna esquerda do Hero.*/
+   .hero-content {
+      flex: 1 1 48%;
+      max-width: 38rem;
+   }
+
+   /*Selo pequeno acima do título.*/
+   .hero-badge{
+      display: inline-flex;
+      align-items: center;
+      padding: 0.65rem 1rem;
+      border: 1px solid rgba(96, 165, 250, 0.25);
+      border-radius: 999px;
+      color: #bfdbfe;
+      background: rgba(37, 99, 235, 0.1);
+      box-shadow: inset 0 0 1.5rem rgba(37, 99, 235, 0.08);
+      backdrop-filter: blur(0.75rem);
+      font-size: 0.9rem;
+      font-weight: 600;
+   }
+
+   /*Título Principal*/
+   .hero-content h1 {
+      margin: 1.5rem 0;
+      max-width: 10ch;
+      font-size: clamp(3rem, 6vw, 5.7rem);
+      line-height: 0.98;
+      letter-spacing: -0.06em;
+   }
+
+   /*Destaque azul no texto do título.*/
+   .hero-content h1 span {
+      color: #60a5fa;
+      text-shadow: 0 0 2rem rgba(96, 165, 250, 0.35);
+   }
+
+   /*Texto de apoio.*/
+   .hero-content > p{
+      max-width: 35rem;
+      margin-bottom: 2rem;
+      color: #cdb5e1;
+      font-size: 1.05rem;
+      line-height: 1.75;
+   }
+
+   /*Agrupa os dois botões principais.*/
+   .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.2rem;
+   }
+
+   /*Lista de benefícios abaixo dos botões.*/
+   .hero-benefits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2.2rem;
+   }
+
+   /*Lista de benefícios abiaxo dos botões.*/
+   .hero-benefits {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem 1.4rem;
+      color: #94a3b8;
+      font-size: 0.88rem;
+   }
+
+   /*Adiciona um ponto Luminoso antes de cada benefício.*/
+   .hero-benefits li::before {
+      content: "";
+      display: inline-block;
+      width: 0.45rem;
+      margin-right: 0.55rem;
+      border-radius: 50%;
+      background: #38dbf8;
+      box-shadow: 0 0 0.8rem rgba(56, 189, 248, 0.8);
+   }
+
+/* =========================================================
+   COMPOSIÇÃO 3D DO HERO
+   Notebook, base neon, ícones e estatísticas.
+   ========================================================= */
+   .hero-visual {
+      position: relative;
+      flex: 1 1 52%;
+      min-height: 38rem;
+      isolation: isolate;
+   }
+
+   /*Cria o brilho geral atrás do notebook.*/
+   .hero-visual::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 28rem;
+      height: 28rem;
+      transform: translate(-45%, -48%);
+      border-radius: 50%;
+      background: radial-gradient(
+         circle,
+         rgba(37, 99, 235, 0.38) 0%,
+         rgba(124, 58, 237, 0.22) 38%,
+         transparent 72%
+      );
+
+      filter: blur(2rem);
+      z-index: -2;
+   }
+
+   /*Base circular neon.*/
+   .hero-ring{
+      position: absolute;
+      left: 50%;
+      bottom: 1.2rem;
+      width: min(34rem, 90%);
+      transform: translateX(-50%);
+      opacity: 0.95;
+      filter:
+      drop-shadow(0 0 1.5rem rgba(37, 99, 235, 0.8))
+      drop-shadow(0 0 3rem rgba(124, 58, 237, 0.55));
+      z-index: 1;
+   }
+
+   /*Notebook principal.*/
+   .hero-notebook {
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      width: min(37rem, 96%);
+      transform: translate(-50%, -50%);
+      filter:
+      drop-shadow(0 2rem 3rem rgba (0, 0, 0, 0.55))
+      drop-shadow(0 0 2.5rem rgba(37, 99, 235, 0.35));
+      z-index: 3;
+   }
+
+   /*Ícones decorativos do lado esquerdo.*/
+   .hero-icons {
+      position: absolute;
+      width: 4.8rem;
+      z-index: 5;
+      filter:
+      drop-shadow(0 0 1.2rem rgba(59, 130, 246, 0.45))
+      drop-shadow(0 0 2rem rgba(124, 58, 237, 0.3));
+   }
+
+   .hero-icon-user{
+      left: 2%;
+      top: 27%;
+   }
+
+   .hero-icon-target{
+      left: 8%;
+      bottom: 21%;
+   }
+
+   /*Cards de estatísticas flutuantes.*/
+   .hero-stat {
+      position: absolute;
+      min-width: 11rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      background:
+      linear-gradient(
+         135deg,
+         rgba(17, 24, 39, 0.92),
+         rgba(30, 41, 59, 0.78)
+      );
+      box-shadow:
+      1 1rem 2.5rem rgba(0, 0, 0, 0.28),
+      inset 0 0 1.5rem rgba(96, 165, 250, 0.04);
+      backdrop-filter: blur(1.25rem);
+      z-index: 6
+   }
+
+   .hero-stat span {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: #94a3b8;
+      font-size: 0.78rem;
+   }
+
+   .hero-stat strong {
+      color: #ffffff;
+      font-family: var(--font-title);
+      font-size: 1.45rem;
+      }
+
+      /*Primeiro card, no alto à direita*/
+      .hero-stat-one {
+  right: 0;
+
+  top: 16%;
+}
+
+/* Segundo card, no centro à direita. */
+.hero-stat-two {
+  right: -2%;
+
+  top: 43%;
+}
+
+/* Terceiro card, abaixo à direita. */
+.hero-stat-three {
+  right: 4%;
+
+  bottom: 12%;
+}
+
+/* =========================================================
+   HERO — AJUSTE FINAL BASEADO NO MOCKUP DE REFERÊNCIA
+   ========================================================= */
+
+.hero-section {
+   min-height: 58rem;
+   padding: 8.2rem 0 3.6rem;
+   background:
+      radial-gradient(circle at 72% 42%, rgba(25, 80, 255, 0.27), transparent 30%),
+      radial-gradient(circle at 79% 73%, rgba(107, 34, 255, 0.23), transparent 27%),
+      linear-gradient(115deg, #020512 0%, #040819 48%, #070926 100%);
+}
+
+.hero-section::before {
+   background-image:
+      radial-gradient(circle, rgba(74, 114, 255, 0.22) 0 0.08rem, transparent 0.1rem),
+      linear-gradient(rgba(69, 111, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(69, 111, 255, 0.025) 1px, transparent 1px);
+   background-size: 5rem 5rem, 3.5rem 3.5rem, 3.5rem 3.5rem;
+   opacity: 0.42;
+}
+
+.hero-section::after {
+   content: "";
+   position: absolute;
+   right: -8rem;
+   bottom: -12rem;
+   width: 48rem;
+   height: 28rem;
+   border-radius: 50%;
+   background: rgba(44, 28, 204, 0.12);
+   filter: blur(5rem);
+   pointer-events: none;
+}
+
+.hero-grid {
+   min-height: 45rem;
+   align-items: center;
+   gap: clamp(1rem, 2.4vw, 2.5rem);
+}
+
+.hero-content {
+   flex: 0 1 42%;
+   max-width: 39rem;
+   padding-top: 1.5rem;
+}
+
+.hero-badge {
+   padding: 0.5rem 1rem;
+   color: #35a8ff;
+   border-color: rgba(29, 139, 255, 0.25);
+   background: rgba(12, 72, 159, 0.24);
+   box-shadow: inset 0 0 1.25rem rgba(0, 122, 255, 0.12);
+   font-size: 0.76rem;
+   letter-spacing: 0.01em;
+}
+
+.hero-badge::before {
+   content: "✦";
+   margin-right: 0.45rem;
+   color: #20ceff;
+}
+
+.hero-content h1 {
+   max-width: 13ch;
+   margin: 1.35rem 0 1.15rem;
+   color: #ffffff;
+   font-size: clamp(3.2rem, 4.7vw, 4.75rem);
+   line-height: 1.08;
+   letter-spacing: -0.045em;
+}
+
+.hero-content h1 span {
+   display: block;
+   width: max-content;
+   color: transparent;
+   background: linear-gradient(90deg, #0d8cff 0%, #405cff 48%, #a442ff 100%);
+   background-clip: text;
+   -webkit-background-clip: text;
+   text-shadow: none;
+}
+
+.hero-content > p {
+   max-width: 29rem;
+   margin-bottom: 1.65rem;
+   color: #b7bfd2;
+   font-size: 1rem;
+   line-height: 1.68;
+}
+
+.hero-actions {
+   gap: 0.85rem;
+   margin-bottom: 2.25rem;
+}
+
+.hero-actions .btn {
+   min-width: 9.4rem;
+   min-height: 3.15rem;
+   padding-inline: 1.45rem;
+   border-radius: 0.7rem;
+   font-size: 0.77rem;
+}
+
+.hero-actions .btn-primary::after {
+   content: "→";
+   margin-left: 0.65rem;
+   font-size: 1rem;
+}
+
+.hero-actions .btn-outline {
+   min-width: 8.8rem;
+}
+
+.hero-benefits {
+   display: flex;
+   width: min(88rem, calc(100vw - 3rem));
+   flex-wrap: nowrap;
+   justify-content: space-between;
+   gap: 1.25rem;
+   margin: 2.15rem 0 0;
+   color: #c5ccda;
+   font-size: 0.72rem;
+}
+
+.hero-benefits li {
+   display: inline-flex;
+   align-items: center;
+   white-space: nowrap;
+}
+
+.hero-benefits li::before {
+   content: "◉";
+   width: auto;
+   height: auto;
+   margin-right: 0.55rem;
+   border: 0;
+   background: transparent;
+   color: #18dba1;
+   font-size: 0.95rem;
+   line-height: 1;
+   box-shadow: 0 0 0.7rem rgba(24, 219, 161, 0.38);
+}
+
+.hero-benefits li:nth-child(2)::before {
+   content: "⚙";
+   color: #4ee5ff;
+   box-shadow: 0 0 0.7rem rgba(78, 229, 255, 0.38);
+}
+
+.hero-benefits li:nth-child(3)::before {
+   content: "⊙";
+   color: #ffd91f;
+   box-shadow: 0 0 0.7rem rgba(255, 217, 31, 0.35);
+}
+
+.hero-benefits li:nth-child(4)::before {
+   content: "♢";
+   color: #b7ef35;
+   box-shadow: 0 0 0.7rem rgba(183, 239, 53, 0.35);
+}
+
+.hero-visual {
+   flex: 0 1 58%;
+   min-height: 45rem;
+}
+
+.hero-visual::before {
+   left: 53%;
+   top: 52%;
+   width: 36rem;
+   height: 31rem;
+   transform: translate(-50%, -50%);
+   background: radial-gradient(circle, rgba(22, 94, 255, 0.34), rgba(83, 39, 213, 0.18) 45%, transparent 72%);
+   filter: blur(2.5rem);
+}
+
+.hero-ring {
+   left: 55%;
+   bottom: -1.6rem;
+   width: min(54rem, 104%);
+   transform: translateX(-50%) scaleY(0.88);
+   opacity: 1;
+   filter:
+      drop-shadow(0 0 1.2rem rgba(0, 118, 255, 0.85))
+      drop-shadow(0 0 2.5rem rgba(115, 45, 255, 0.58));
+}
+
+.hero-notebook {
+   left: 51%;
+   top: 49%;
+   width: min(60rem, 108%);
+   transform: translate(-50%, -50%);
+   filter:
+      drop-shadow(0 2rem 2.7rem rgba(0, 0, 0, 0.58))
+      drop-shadow(0 0 1.8rem rgba(37, 99, 235, 0.28));
+}
+
+.hero-icon {
+   position: absolute;
+   width: 12.5rem;
+   height: auto;
+   z-index: 5;
+   filter:
+      drop-shadow(0 0 1rem rgba(37, 157, 255, 0.52))
+      drop-shadow(0 0 1.8rem rgba(124, 58, 237, 0.34));
+}
+
+.hero-icon-user {
+   left: -4%;
+   top: 15%;
+}
+
+.hero-icon-target {
+   left: -1%;
+   bottom: 22%;
+   width: 11.25rem;
+}
+
+.hero-stat {
+   display: flex;
+   min-width: 11.3rem;
+   min-height: 5.2rem;
+   flex-direction: column;
+   justify-content: center;
+   padding: 0.85rem 1rem;
+   border-color: rgba(74, 121, 255, 0.56);
+   border-radius: 0.75rem;
+   background: linear-gradient(120deg, rgba(4, 52, 136, 0.88), rgba(48, 26, 128, 0.84));
+   box-shadow:
+      0 0.8rem 2rem rgba(0, 0, 0, 0.3),
+      inset 0 0 1.5rem rgba(41, 105, 255, 0.13);
+}
+
+.hero-stat::after {
+   position: absolute;
+   right: 0.9rem;
+   color: #4d73ff;
+   font-size: 1.35rem;
+   filter: drop-shadow(0 0 0.5rem rgba(73, 93, 255, 0.7));
+}
+
+.hero-stat-one::after {
+   content: "▣";
+}
+
+.hero-stat-two::after {
+   content: "▥";
+   color: #a251ff;
+}
+
+.hero-stat-three::after {
+   content: "♟";
+   color: #168fd7;
+}
+
+.hero-stat span {
+   margin-bottom: 0.28rem;
+   color: #d9e2f4;
+   font-size: 0.68rem;
+}
+
+.hero-stat strong {
+   font-size: 1.45rem;
+}
+
+.hero-stat-one {
+   right: 0.4rem;
+   top: 12%;
+}
+
+.hero-stat-two {
+   right: -0.7rem;
+   top: 38%;
+}
+
+.hero-stat-three {
+   right: 0.8rem;
+   bottom: 18%;
+}
+
+@media (max-width: 75rem) {
+   .hero-content h1 {
+      font-size: clamp(2.8rem, 4.6vw, 3.65rem);
+   }
+
+   .hero-stat {
+      min-width: 9.7rem;
+   }
+
+   .hero-benefits {
+      width: calc(100vw - 3rem);
+   }
+}
+
+@media (max-width: 60rem) {
+   .hero-section {
+      padding-top: 10.5rem;
+   }
+
+   .hero-grid {
+      flex-direction: column;
+   }
+
+   .hero-content {
+      max-width: 42rem;
+      text-align: center;
+   }
+
+   .hero-content h1,
+   .hero-content h1 span,
+   .hero-content > p {
+      margin-inline: auto;
+   }
+
+   .hero-actions,
+   .hero-benefits {
+      justify-content: center;
+   }
+
+   .hero-benefits {
+      width: 100%;
+      flex-wrap: wrap;
+   }
+
+   .hero-visual {
+      width: 100%;
+      min-height: 38rem;
+   }
+}
+
+@media (max-width: 40rem) {
+   .hero-section {
+      min-height: auto;
+      padding: 10.8rem 0 2.5rem;
+   }
+
+   .hero-content h1 {
+      font-size: clamp(2.55rem, 12vw, 3.15rem);
+   }
+
+   .hero-actions {
+      flex-direction: column;
+   }
+
+   .hero-actions .btn {
+      width: 100%;
+   }
+
+   .hero-visual {
+      min-height: 27rem;
+   }
+
+   .hero-icon {
+      width: 7.2rem;
+   }
+
+   .hero-icon-target {
+      width: 8rem;
+   }
+
+   .hero-stat {
+      min-width: 7.2rem;
+      min-height: 4rem;
+      padding: 0.55rem 0.65rem;
+   }
+
+   .hero-stat span {
+      font-size: 0.55rem;
+   }
+
+   .hero-stat strong {
+      font-size: 1rem;
+   }
+}
