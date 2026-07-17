@@ -268,15 +268,17 @@
           <!-- CARD DO FORMULÁRIO -->
 
           <article class="profile-card">
-            <header class="card-heading">
-              <span>Análise personalizada</span>
+            <header class="card-heading profile-heading">
+              <div>
+                <h2>Seu perfil</h2>
 
-              <h2>Seu perfil</h2>
+                <p>Preencha suas informações para uma análise precisa.</p>
+              </div>
 
-              <p>
-                Preencha suas informações para o SkillMatch Pro comparar suas
-                habilidades com as vagas disponíveis.
-              </p>
+              <span class="saved-badge">
+                <span aria-hidden="true">✓</span>
+                Campos salvos
+              </span>
             </header>
 
             <form id="profileForm" class="profile-form">
@@ -304,19 +306,14 @@
                 <option value="fullstack">Full Stack</option>
               </select>
 
-              <label for="experiencia"> Experiência em meses </label>
+              <label for="experiencia">Nível de experiência</label>
 
-              <input
-                id="experiencia"
-                name="experiencia"
-                type="number"
-                min="0"
-                max="600"
-                step="1"
-                inputmode="numeric"
-                placeholder="Ex: 6"
-                required
-              />
+              <select id="experiencia" name="experiencia" required>
+                <option value="">Selecione seu nível</option>
+                <option value="12">Júnior (1–2 anos)</option>
+                <option value="36">Pleno (3–5 anos)</option>
+                <option value="72">Sênior (mais de 5 anos)</option>
+              </select>
 
               <label for="habilidades"> Habilidades </label>
 
@@ -339,8 +336,17 @@
                 Analisar compatibilidade
               </button>
 
+              <p
+                id="formError"
+                class="form-error"
+                role="alert"
+                aria-live="assertive"
+                hidden
+              ></p>
+
               <p id="formMessage" class="form-message" aria-live="polite">
-                Seus dados serão salvos automaticamente no navegador.
+                <span aria-hidden="true">♢</span>
+                Seus dados são salvos automaticamente e ficam seguros.
               </p>
             </form>
           </article>
@@ -348,18 +354,23 @@
           <!-- CARD DE MELHOR COMPATIBILIDADE -->
 
           <article id="bestMatch" class="best-match-card">
-            <header class="card-heading">
-              <span>Resultado principal</span>
+            <header class="card-heading match-heading">
+              <h2>
+                <span aria-hidden="true">🏅</span>
+                Melhor compatibilidade para você
+              </h2>
 
-              <h2>Melhor compatibilidade</h2>
-
-              <p>
-                Após a análise, este card mostrará a vaga mais compatível com o
-                seu perfil.
-              </p>
+              <button
+                id="bestMatchDetails"
+                class="details-button"
+                type="button"
+                disabled
+              >
+                Ver detalhes da vaga
+              </button>
             </header>
 
-            <div id="bestMatchContent" class="match-preview">
+            <div id="bestMatchContent" class="match-preview" aria-live="polite">
               <p class="empty-result">
                 Preencha seu perfil para descobrir a vaga mais compatível.
               </p>
