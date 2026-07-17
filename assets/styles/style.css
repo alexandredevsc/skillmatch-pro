@@ -1265,3 +1265,526 @@ img {
       white-space: nowrap;
    }
 }
+
+
+/* =========================================================
+   ANÁLISE DE PERFIL
+   Fundo, espaçamento e cabeçalhos
+   ========================================================= */
+
+.analysis-section {
+   position: relative;
+   padding: 0 0 2.5rem;
+   color: #0b1533;
+   background:
+      radial-gradient(circle at 20% 20%,
+         rgba(37, 99, 235, 0.04),
+         transparent 24rem),
+      radial-gradient(circle at 80% 40%,
+         rgba(124, 58, 237, 0.035),
+         transparent 25rem),
+      #f8faff;
+}
+
+.analysis-section .container {
+   position: relative;
+   z-index: 1;
+}
+
+.card-heading {
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 0.75rem;
+   margin-bottom: 1.5rem;
+}
+
+.card-heading h2 {
+   margin-bottom: 0;
+   color: #0b1533;
+   font-size: clamp(1.15rem, 4vw, 1.45rem);
+   line-height: 1.25;
+   letter-spacing: -0.025em;
+}
+
+.profile-heading p {
+   margin: 0.35rem 0 0;
+   color: #6b7894;
+   font-size: 0.78rem;
+   line-height: 1.5;
+}
+
+.saved-badge {
+   display: inline-flex;
+   align-items: center;
+   justify-content: center;
+   gap: 0.35rem;
+   padding: 0.45rem 0.75rem;
+   color: #16a36a;
+   border-radius: 999px;
+   background: #e7f9f1;
+   font-size: 0.68rem;
+   font-weight: 700;
+   white-space: nowrap;
+}
+
+.saved-badge>span {
+   font-size: 0.75rem;
+}
+
+@media (min-width: 48rem) {
+   .card-heading {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+   }
+}
+
+/* =========================================================
+   CARDS DA ANÁLISE — MOBILE FIRST
+   ========================================================= */
+
+.analysis-grid {
+   display: grid;
+   grid-template-columns: minmax(0, 1fr);
+   gap: 1rem;
+   align-items: stretch;
+}
+
+.profile-card,
+.best-match-card {
+   min-width: 0;
+   padding: 1.25rem;
+   border: 1px solid #e4eaf4;
+   border-radius: 1rem;
+   background: rgba(255, 255, 255, 0.96);
+   box-shadow: 0 0.75rem 2rem rgba(31, 52, 100, 0.08);
+}
+
+.profile-card {
+   position: relative;
+}
+
+.best-match-card {
+   position: relative;
+}
+
+@media (min-width: 48rem) {
+
+   .profile-card,
+   .best-match-card {
+      padding: 1.5rem;
+   }
+}
+
+@media (min-width: 64rem) {
+   .analysis-grid {
+      grid-template-columns:
+         minmax(20rem, 0.85fr) minmax(0, 1.15fr);
+      gap: 0.25rem;
+   }
+
+   .profile-card,
+   .best-match-card {
+      min-height: 29rem;
+      padding: 1.5rem;
+   }
+
+}
+
+
+/* =========================================================
+   FORMULÁRIO DE ANÁLISE — MOBILE FIRST
+   ========================================================= */
+
+.profile-form {
+   display: grid;
+   grid-template-columns: minmax(0, 1fr);
+   gap: 0.45rem;
+}
+
+.profile-form label {
+   margin-top: 0.4rem;
+   color: #17213d;
+   font-size: 0.72rem;
+   font-weight: 700;
+}
+
+.profile-form input,
+.profile-form select {
+   width: 100%;
+   min-height: 2.75rem;
+   padding: 0.65rem 0.8rem;
+   color: #1a2542;
+   border: 1px solid #dbe3f0;
+   border-radius: 0.5rem;
+   outline: none;
+   background-color: #ffffff;
+   font-size: 0.78rem;
+   transition:
+      border-color 180ms ease,
+      box-shadow 180ms ease,
+      background-color 180ms ease;
+}
+
+.profile-form input::placeholder {
+   color: #9ba7bc;
+   opacity: 1;
+}
+
+.profile-form select {
+   cursor: pointer;
+}
+
+.profile-form input:hover,
+.profile-form select:hover {
+   border-color: #becbe0;
+}
+
+.profile-form input:focus,
+.profile-form select:focus {
+   border-color: #4387ff;
+   background-color: #ffffff;
+   box-shadow: 0 0 0 0.2rem rgba(67, 135, 255, 0.13);
+}
+
+.profile-form input:invalid:not(:placeholder-shown) {
+   border-color: #ef6b75;
+}
+
+.profile-form small {
+   margin-top: -0.15rem;
+   color: #7c89a2;
+   font-size: 0.65rem;
+   line-height: 1.4;
+}
+
+.profile-form .btn {
+   width: 100%;
+   margin-top: 0.55rem;
+   border-radius: 0.5rem;
+   font-size: 0.75rem;
+}
+
+.form-error {
+   margin: 0.35rem 0 0;
+   padding: 0.65rem 0.75rem;
+   color: #b42335;
+   border: 1px solid #ffd1d6;
+   border-radius: 0.5rem;
+   background: #fff0f2;
+   font-size: 0.7rem;
+}
+
+.form-message {
+   display: flex;
+   align-items: center;
+   gap: 0.45rem;
+   margin: 0.55rem 0 0;
+   padding: 0.7rem 0.8rem;
+   color: #159569;
+   border-radius: 0.5rem;
+   background: #eefbf6;
+   font-size: 0.67rem;
+   line-height: 1.4;
+}
+
+.form-message>span {
+   display: grid;
+   width: 1rem;
+   height: 1rem;
+   flex: 0 0 1rem;
+   place-items: center;
+   color: #10b981;
+   font-size: 0.7rem;
+}
+
+@media (min-width: 64rem) {
+
+   .profile-form input,
+   .profile-form select {
+      min-height: 2.65rem;
+   }
+}
+
+/* =========================================================
+   CARD DE MELHOR COMPATIBILIDADE — MOBILE FIRST
+   ========================================================= */
+
+.match-heading {
+   padding-bottom: 1rem;
+   border-bottom: 1px solid #edf1f7;
+}
+
+.match-heading h2 {
+   display: flex;
+   align-items: center;
+   gap: 0.55rem;
+}
+
+.match-heading h2>span {
+   display: grid;
+   width: 1.5rem;
+   height: 1.5rem;
+   flex: 0 0 1.5rem;
+   place-items: center;
+   font-size: 1.1rem;
+}
+
+.details-button {
+   display: inline-flex;
+   min-height: 2.4rem;
+   align-items: center;
+   justify-content: center;
+   padding: 0.55rem 0.9rem;
+   color: #24304c;
+   border: 1px solid #e5eaf2;
+   border-radius: 0.75rem;
+   background: #f1f4f9;
+   font-size: 0.68rem;
+   font-weight: 700;
+   white-space: nowrap;
+   cursor: pointer;
+   transition:
+      color 180ms ease,
+      border-color 180ms ease,
+      background-color 180ms ease,
+      transform 180ms ease;
+}
+
+.details-button:not(:disabled):hover {
+   color: #ffffff;
+   border-color: #357fff;
+   background: #357fff;
+   transform: translateY(-0.1rem);
+}
+
+.details-button:disabled {
+   color: #9aa5b8;
+   border-color: #e7ebf2;
+   background: #f3f5f8;
+   cursor: not-allowed;
+   opacity: 0.78;
+}
+
+.match-preview {
+   display: grid;
+   min-height: 15rem;
+   place-items: center;
+   padding: 1.25rem;
+   border-radius: 0.8rem;
+   background:
+      radial-gradient(circle at 50% 40%,
+         rgba(37, 99, 235, 0.055),
+         transparent 12rem),
+      #fbfcff;
+}
+
+.empty-result {
+   position: relative;
+   max-width: 19rem;
+   margin: 0;
+   padding-top: 3.25rem;
+   color: #7b879e;
+   font-size: 0.78rem;
+   line-height: 1.6;
+   text-align: center;
+}
+
+.empty-result::before {
+   content: "?";
+   position: absolute;
+   top: 0;
+   left: 50%;
+   display: grid;
+   width: 2.5rem;
+   height: 2.5rem;
+   place-items: center;
+   color: #367fff;
+   border: 1px solid #dce7ff;
+   border-radius: 50%;
+   background: #edf4ff;
+   font-size: 1rem;
+   font-weight: 800;
+   transform: translateX(-50%);
+}
+
+@media (min-width: 48rem) {
+   .match-heading {
+      align-items: center;
+   }
+
+   .match-preview {
+      min-height: 18rem;
+   }
+}
+
+@media (min-width: 64rem) {
+   .match-heading {
+      min-height: 3.75rem;
+   }
+
+   .match-preview {
+      min-height: 21.5rem;
+   }
+}
+
+/* =========================================================
+   RESPONSIVIDADE DA ANÁLISE
+   ========================================================= */
+
+@media (max-width: 47.999rem) {
+   .analysis-section {
+      padding-bottom: 2rem;
+   }
+
+   .analysis-section .container {
+      width: min(calc(100% - 2rem), var(--container));
+   }
+
+   .analysis-grid {
+      gap: 0.9rem;
+   }
+
+   .profile-card,
+   .best-match-card {
+      padding: 1rem;
+      border-radius: 0.85rem;
+   }
+
+   .card-heading {
+      gap: 0.65rem;
+      margin-bottom: 1.1rem;
+   }
+
+   .saved-badge {
+      align-self: flex-start;
+   }
+
+   .profile-form input,
+   .profile-form select {
+      min-height: 2.8rem;
+      font-size: 0.8rem;
+   }
+
+   .profile-form .btn {
+      min-height: 2.9rem;
+   }
+
+   .match-heading {
+      align-items: stretch;
+   }
+
+   .details-button {
+      width: 100%;
+   }
+
+   .match-preview {
+      min-height: 12rem;
+      padding: 1rem;
+   }
+}
+
+@media (min-width: 48rem) and (max-width: 63.999rem) {
+   .analysis-grid {
+      gap: 1.25rem;
+   }
+
+   .profile-card,
+   .best-match-card {
+      padding: 1.4rem;
+   }
+
+   .match-preview {
+      min-height: 16rem;
+   }
+}
+
+@media (min-width: 80rem) {
+   .analysis-grid {
+      grid-template-columns:
+         minmax(22rem, 0.84fr) minmax(0, 1.16fr);
+   }
+
+   .profile-card,
+   .best-match-card {
+      padding: 1.6rem;
+   }
+}
+
+/* =========================================================
+   ACABAMENTO VISUAL DA ANÁLISE
+   Ajustes finais baseados no mockup de referência.
+   ========================================================= */
+
+.analysis-section::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   background-image:
+      linear-gradient(rgba(37, 99, 235, 0.012) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(37, 99, 235, 0.012) 1px, transparent 1px);
+   background-size: 3rem 3rem;
+   pointer-events: none;
+}
+
+.profile-card,
+.best-match-card {
+   overflow: hidden;
+   border-color: rgba(218, 226, 239, 0.9);
+   background: rgba(255, 255, 255, 0.98);
+   box-shadow:
+      0 0.35rem 0.9rem rgba(28, 47, 91, 0.045),
+      0 1.15rem 2.75rem rgba(28, 47, 91, 0.065);
+}
+
+.profile-card::before,
+.best-match-card::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   right: 0;
+   left: 0;
+   height: 0.16rem;
+   background: linear-gradient(
+      90deg,
+      rgba(22, 133, 255, 0),
+      rgba(22, 133, 255, 0.38),
+      rgba(139, 77, 255, 0)
+   );
+   opacity: 0.45;
+}
+
+.card-heading h2,
+.match-heading h2 {
+   font-weight: 700;
+}
+
+.profile-form input,
+.profile-form select {
+   box-shadow: inset 0 1px 2px rgba(20, 35, 70, 0.025);
+}
+
+.profile-form .btn {
+   box-shadow: 0 0.55rem 1.25rem rgba(79, 83, 255, 0.2);
+}
+
+.match-preview {
+   border: 1px solid rgba(231, 237, 247, 0.78);
+}
+
+@media (min-width: 64rem) {
+   .analysis-grid {
+      align-items: stretch;
+   }
+
+   .profile-card,
+   .best-match-card {
+      height: 100%;
+   }
+
+   .match-heading h2 {
+      max-width: none;
+      white-space: nowrap;
+   }
+}
