@@ -402,27 +402,52 @@
 
           <p
             id="jobsStatus"
-            class="jobs-status"
+            class="jobs-status is-loading"
             role="status"
             aria-live="polite"
           >
             Carregando vagas…
           </p>
 
-          <!-- GRID DAS VAGAS -->
+          <!-- CARROSSEL DAS VAGAS -->
 
-          <div
-            id="jobsContainer"
-            class="jobs-grid"
-            role="region"
-            aria-label="Lista de oportunidades"
-            aria-busy="true"
-          >
-            <!--
-              Os cards serão criados dinamicamente
-              pelo arquivo ui.js utilizando
-              document.createElement().
-            -->
+          <div class="jobs-carousel">
+            <button
+              id="previousJobs"
+              class="carousel-button carousel-button--previous"
+              type="button"
+              aria-label="Exibir vagas anteriores"
+              aria-controls="jobsContainer"
+              disabled
+            >
+              <span aria-hidden="true">‹</span>
+            </button>
+
+            <div
+              id="jobsContainer"
+              class="jobs-grid"
+              role="region"
+              aria-label="Lista de oportunidades"
+              aria-busy="true"
+              tabindex="0"
+            >
+              <!--
+                Os cards serão criados dinamicamente
+                pelo arquivo ui.js utilizando
+                document.createElement().
+              -->
+            </div>
+
+            <button
+              id="nextJobs"
+              class="carousel-button carousel-button--next"
+              type="button"
+              aria-label="Exibir próximas vagas"
+              aria-controls="jobsContainer"
+              disabled
+            >
+              <span aria-hidden="true">›</span>
+            </button>
           </div>
         </div>
       </section>
