@@ -3355,7 +3355,7 @@ img {
 }
 
 .footer-logo {
-   width: clamp(9.5rem, 28vw, 11.5rem);
+   width: clamp(10.5rem, 28vw, 12.5rem);
    height: auto;
    margin-bottom: 0.8rem;
    object-fit: contain;
@@ -3404,14 +3404,11 @@ img {
    transform: translateY(-0.15rem);
 }
 
-.social-links a:nth-child(2) {
-   font-size: 0.78rem;
-   text-transform: lowercase;
-}
-
-.social-links a:nth-child(3) {
-   font-size: 0.6rem;
-   text-transform: lowercase;
+.social-links svg {
+   width: 1rem;
+   height: 1rem;
+   flex: 0 0 1rem;
+   fill: currentColor;
 }
 
 /* =========================================================
@@ -3633,6 +3630,7 @@ img {
    .footer-bottom p:last-child {
       text-align: right;
    }
+
 }
 
 @media (prefers-reduced-motion: reduce) {
