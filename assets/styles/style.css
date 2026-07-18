@@ -351,10 +351,11 @@ img {
 }
 
 .theme-toggle span:last-child {
-   display: grid;
+   display: flex;
    width: 1.15rem;
    height: 1.15rem;
-   place-items: center;
+   align-items: center;
+   justify-content: center;
    border-radius: 50%;
    background: #f8fafc;
    font-size: 0;
@@ -1171,10 +1172,11 @@ img {
    position: absolute;
    top: 0.65rem;
    left: calc(50% - 6.2rem);
-   display: grid;
+   display: flex;
    width: 1.85rem;
    height: 1.85rem;
-   place-items: center;
+   align-items: center;
+   justify-content: center;
    color: #ffffff;
    border-radius: 50%;
    background: #1685ff;
@@ -1345,8 +1347,8 @@ img {
    ========================================================= */
 
 .analysis-grid {
-   display: grid;
-   grid-template-columns: minmax(0, 1fr);
+   display: flex;
+   flex-direction: column;
    gap: 1rem;
    align-items: stretch;
 }
@@ -1379,9 +1381,17 @@ img {
 
 @media (min-width: 64rem) {
    .analysis-grid {
-      grid-template-columns:
-         minmax(20rem, 0.85fr) minmax(0, 1.15fr);
+      flex-direction: row;
       gap: 0.25rem;
+   }
+
+   .profile-card {
+      min-width: 20rem;
+      flex: 0.85 1 0;
+   }
+
+   .best-match-card {
+      flex: 1.15 1 0;
    }
 
    .profile-card,
@@ -1398,8 +1408,8 @@ img {
    ========================================================= */
 
 .profile-form {
-   display: grid;
-   grid-template-columns: minmax(0, 1fr);
+   display: flex;
+   flex-direction: column;
    gap: 0.45rem;
 }
 
@@ -1490,11 +1500,12 @@ img {
 }
 
 .form-message>span {
-   display: grid;
+   display: flex;
    width: 1rem;
    height: 1rem;
    flex: 0 0 1rem;
-   place-items: center;
+   align-items: center;
+   justify-content: center;
    color: #10b981;
    font-size: 0.7rem;
 }
@@ -1523,11 +1534,12 @@ img {
 }
 
 .match-heading h2>span {
-   display: grid;
+   display: flex;
    width: 1.5rem;
    height: 1.5rem;
    flex: 0 0 1.5rem;
-   place-items: center;
+   align-items: center;
+   justify-content: center;
    font-size: 1.1rem;
 }
 
@@ -1568,9 +1580,10 @@ img {
 }
 
 .match-preview {
-   display: grid;
+   display: flex;
    min-height: 15rem;
-   place-items: center;
+   align-items: center;
+   justify-content: center;
    padding: 1.25rem;
    border-radius: 0.8rem;
    background:
@@ -1596,10 +1609,11 @@ img {
    position: absolute;
    top: 0;
    left: 50%;
-   display: grid;
+   display: flex;
    width: 2.5rem;
    height: 2.5rem;
-   place-items: center;
+   align-items: center;
+   justify-content: center;
    color: #367fff;
    border: 1px solid #dce7ff;
    border-radius: 50%;
@@ -1701,9 +1715,15 @@ img {
 }
 
 @media (min-width: 80rem) {
-   .analysis-grid {
-      grid-template-columns:
-         minmax(22rem, 0.84fr) minmax(0, 1.16fr);
+   .profile-card {
+      min-width: 22rem;
+      flex-grow: 0.84;
+      flex-basis: 0;
+   }
+
+   .best-match-card {
+      flex-grow: 1.16;
+      flex-basis: 0;
    }
 
    .profile-card,
