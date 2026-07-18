@@ -385,70 +385,69 @@
 
       <section id="vagas" class="jobs-section">
         <div class="container">
-          <header class="section-header">
-            <span>Oportunidades</span>
+          <header class="section-header jobs-heading">
+            <h2>Outras oportunidades para você</h2>
 
-            <h2>Outras vagas para você</h2>
-
-            <p>
-              As vagas abaixo serão carregadas dinamicamente pelo JavaScript.
-            </p>
+            <button
+              id="viewAllJobs"
+              class="view-all-button"
+              type="button"
+              aria-controls="jobsContainer"
+            >
+              Ver todas as vagas
+            </button>
           </header>
-
-          <!-- FILTROS E ORDENAÇÃO -->
-
-          <div
-            class="jobs-filter"
-            role="group"
-            aria-label="Filtrar e ordenar vagas"
-          >
-            <button class="filter-btn active" type="button" data-filter="todas">
-              Todas
-            </button>
-
-            <button class="filter-btn" type="button" data-filter="front-end">
-              Front-End
-            </button>
-
-            <button class="filter-btn" type="button" data-filter="ui-ux">
-              UI/UX
-            </button>
-
-            <button class="filter-btn" type="button" data-filter="fullstack">
-              Full Stack
-            </button>
-
-            <div class="jobs-order">
-              <label for="jobsOrder"> Ordenar vagas </label>
-
-              <select
-                id="jobsOrder"
-                name="jobsOrder"
-                aria-label="Ordenar vagas"
-              >
-                <option value="compatibilidade">Maior compatibilidade</option>
-
-                <option value="salario">Maior salário</option>
-
-                <option value="empresa">Nome da empresa</option>
-              </select>
-            </div>
-          </div>
 
           <!-- MENSAGEM DE ESTADO -->
 
-          <p id="jobsStatus" class="jobs-status" aria-live="polite">
-            As vagas serão exibidas após a análise do perfil.
+          <p
+            id="jobsStatus"
+            class="jobs-status is-loading"
+            role="status"
+            aria-live="polite"
+          >
+            Carregando vagas…
           </p>
 
-          <!-- GRID DAS VAGAS -->
+          <!-- CARROSSEL DAS VAGAS -->
 
-          <div id="jobsContainer" class="jobs-grid">
-            <!--
-              Os cards serão criados dinamicamente
-              pelo arquivo ui.js utilizando
-              document.createElement().
-            -->
+          <div class="jobs-carousel">
+            <button
+              id="previousJobs"
+              class="carousel-button carousel-button--previous"
+              type="button"
+              aria-label="Exibir vagas anteriores"
+              aria-controls="jobsContainer"
+              disabled
+            >
+              <span aria-hidden="true">‹</span>
+            </button>
+
+            <div
+              id="jobsContainer"
+              class="jobs-grid"
+              role="region"
+              aria-label="Lista de oportunidades"
+              aria-busy="true"
+              tabindex="0"
+            >
+              <!--
+                Os cards serão criados dinamicamente
+                pelo arquivo ui.js utilizando
+                document.createElement().
+              -->
+            </div>
+
+            <button
+              id="nextJobs"
+              class="carousel-button carousel-button--next"
+              type="button"
+              aria-label="Exibir próximas vagas"
+              aria-controls="jobsContainer"
+              disabled
+            >
+              <span aria-hidden="true">›</span>
+            </button>
           </div>
         </div>
       </section>
