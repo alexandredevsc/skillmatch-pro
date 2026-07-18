@@ -458,22 +458,35 @@
 
       <section id="recomendacoes" class="courses-section">
         <div class="container">
-          <header class="section-header">
-            <span>Recomendações</span>
+          <header class="section-header courses-heading">
+            <h2>Recomendações para você evoluir ainda mais</h2>
 
-            <h2>Continue evoluindo</h2>
-
-            <p>
-              Com base no seu perfil, recomendamos cursos para aumentar sua
-              compatibilidade com as vagas disponíveis.
-            </p>
+            <button
+              id="viewAllCourses"
+              class="view-all-button"
+              type="button"
+              aria-controls="coursesContainer"
+            >
+              Ver todos os cursos
+            </button>
           </header>
 
-          <p id="coursesStatus" class="courses-status" aria-live="polite">
-            As recomendações aparecerão após a análise do perfil.
+          <p
+            id="coursesStatus"
+            class="courses-status is-waiting"
+            role="status"
+            aria-live="polite"
+          >
+            Aguardando a análise do perfil.
           </p>
 
-          <div id="coursesContainer" class="courses-grid">
+          <div
+            id="coursesContainer"
+            class="courses-list"
+            role="region"
+            aria-label="Lista de cursos recomendados"
+            aria-busy="false"
+          >
             <!--
               Os cards dos cursos serão criados
               dinamicamente pelo JavaScript.
