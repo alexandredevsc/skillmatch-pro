@@ -2898,3 +2898,344 @@ img {
       transform: none;
    }
 }
+
+/* =========================================================
+   CHAMADA FINAL
+   Fundo e estrutura do banner — mobile first.
+   ========================================================= */
+
+.cta-section {
+   position: relative;
+   overflow: hidden;
+   padding: 1rem 0 3.25rem;
+   background: #f8faff;
+}
+
+.cta-section .container {
+   position: relative;
+   z-index: 1;
+}
+
+.cta-card {
+   position: relative;
+   display: flex;
+   min-height: 18rem;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 1.5rem;
+   overflow: hidden;
+   padding: 2rem 1.25rem;
+   color: #ffffff;
+   border: 1px solid rgba(73, 119, 255, 0.2);
+   border-radius: 0.9rem;
+   background:
+      radial-gradient(
+         circle at 18% 45%,
+         rgba(27, 126, 255, 0.2),
+         transparent 24rem
+      ),
+      radial-gradient(
+         circle at 82% 35%,
+         rgba(126, 66, 255, 0.18),
+         transparent 22rem
+      ),
+      linear-gradient(110deg, #031027 0%, #02081a 52%, #05081c 100%);
+   box-shadow:
+      0 0.75rem 2rem rgba(19, 34, 70, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.cta-card::before {
+   content: "";
+   position: absolute;
+   inset: 0;
+   background-image:
+      radial-gradient(circle, rgba(82, 143, 255, 0.22) 1px, transparent 1px);
+   background-size: 2.5rem 2.5rem;
+   opacity: 0.2;
+   pointer-events: none;
+}
+
+.cta-card > * {
+   position: relative;
+   z-index: 1;
+}
+
+@media (min-width: 48rem) {
+   .cta-section {
+      padding: 1.25rem 0 3.5rem;
+   }
+
+   .cta-card {
+      min-height: 14rem;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 2rem;
+   }
+}
+
+@media (min-width: 64rem) {
+   .cta-card {
+      min-height: 12rem;
+      padding: 1.75rem 3rem;
+   }
+}
+
+/* =========================================================
+   FOGUETE DA CHAMADA FINAL
+   ========================================================= */
+
+.cta-rocket {
+   width: clamp(7.5rem, 38vw, 10rem);
+   height: auto;
+   flex: 0 0 auto;
+   object-fit: contain;
+   filter: drop-shadow(0 0.8rem 1.2rem rgba(24, 111, 255, 0.28));
+   pointer-events: none;
+   user-select: none;
+}
+
+@media (max-width: 47.999rem) {
+   .cta-rocket {
+      margin: -0.75rem auto -0.5rem;
+   }
+}
+
+@media (min-width: 48rem) and (max-width: 63.999rem) {
+   .cta-rocket {
+      width: 8.75rem;
+      margin-left: -0.75rem;
+   }
+}
+
+@media (min-width: 64rem) {
+   .cta-card {
+      padding-left: 14.5rem;
+   }
+
+   .cta-rocket {
+      position: absolute;
+      bottom: -1.65rem;
+      left: 1.25rem;
+      width: 12rem;
+      max-height: 14rem;
+   }
+}
+
+@media (min-width: 80rem) {
+   .cta-card {
+      padding-left: 16rem;
+   }
+
+   .cta-rocket {
+      left: 2rem;
+      width: 12.75rem;
+   }
+}
+
+/* =========================================================
+   CONTEÚDO DA CHAMADA FINAL
+   ========================================================= */
+
+.cta-content {
+   display: flex;
+   max-width: 34rem;
+   flex: 1 1 auto;
+   flex-direction: column;
+   align-items: center;
+   text-align: center;
+}
+
+.cta-badge {
+   display: inline-flex;
+   min-height: 1.6rem;
+   align-items: center;
+   justify-content: center;
+   gap: 0.35rem;
+   margin-bottom: 0.65rem;
+   padding: 0.3rem 0.65rem;
+   color: #75b9ff;
+   border: 1px solid rgba(67, 143, 255, 0.25);
+   border-radius: 999px;
+   background: rgba(21, 83, 168, 0.18);
+   font-size: 0.58rem;
+   font-weight: 800;
+   letter-spacing: 0.055em;
+   line-height: 1;
+   text-transform: uppercase;
+}
+
+.cta-badge::before {
+   content: "✧";
+   color: #34c8ff;
+   font-size: 0.68rem;
+}
+
+.cta-content h2 {
+   margin: 0 0 0.5rem;
+   color: #ffffff;
+   font-size: clamp(1.45rem, 5vw, 2rem);
+   line-height: 1.2;
+   letter-spacing: -0.035em;
+}
+
+.cta-content h2 > span {
+   color: #8d59ff;
+   background: linear-gradient(90deg, #5e8dff, #a64bff);
+   background-clip: text;
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+}
+
+.cta-content p {
+   max-width: 31rem;
+   margin: 0;
+   color: #aebbd1;
+   font-size: clamp(0.72rem, 2vw, 0.84rem);
+   line-height: 1.6;
+}
+
+@media (min-width: 48rem) {
+   .cta-content {
+      align-items: flex-start;
+      text-align: left;
+   }
+
+   .cta-content h2 {
+      font-size: clamp(1.5rem, 3vw, 2rem);
+   }
+}
+
+@media (min-width: 64rem) {
+   .cta-content h2 {
+      white-space: nowrap;
+   }
+}
+
+/* =========================================================
+   AÇÃO DA CHAMADA FINAL
+   ========================================================= */
+
+.cta-actions {
+   display: flex;
+   width: 100%;
+   max-width: 17rem;
+   flex: 0 0 auto;
+   flex-direction: column;
+   align-items: center;
+   gap: 0.6rem;
+}
+
+.cta-actions .btn {
+   width: 100%;
+   min-height: 3rem;
+   padding-inline: 1.35rem;
+   border-radius: 0.65rem;
+   font-size: 0.72rem;
+   box-shadow:
+      0 0.65rem 1.5rem rgba(72, 94, 255, 0.3),
+      0 0 1.5rem rgba(93, 68, 255, 0.12);
+}
+
+.cta-actions .btn:hover {
+   box-shadow:
+      0 0.8rem 1.75rem rgba(72, 94, 255, 0.38),
+      0 0 1.8rem rgba(93, 68, 255, 0.18);
+}
+
+.cta-actions small {
+   color: #c0cadb;
+   font-size: 0.62rem;
+   line-height: 1.4;
+   text-align: center;
+}
+
+@media (min-width: 48rem) {
+   .cta-actions {
+      width: 13.5rem;
+      max-width: none;
+   }
+}
+
+@media (min-width: 64rem) {
+   .cta-actions {
+      width: 15rem;
+   }
+}
+
+/* =========================================================
+   RESPONSIVIDADE FINAL DA CHAMADA
+   ========================================================= */
+
+@media (max-width: 29.999rem) {
+   .cta-section .container {
+      width: min(calc(100% - 2rem), var(--container));
+   }
+
+   .cta-card {
+      min-height: auto;
+      gap: 1.1rem;
+      padding: 1.5rem 1rem;
+   }
+
+   .cta-rocket {
+      width: min(8.5rem, 52vw);
+   }
+
+   .cta-content h2 {
+      font-size: clamp(1.35rem, 8vw, 1.7rem);
+   }
+}
+
+@media (min-width: 48rem) and (max-width: 63.999rem) {
+   .cta-card {
+      flex-wrap: wrap;
+      gap: 1.25rem 1.5rem;
+      padding: 1.75rem 2rem;
+   }
+
+   .cta-content {
+      min-width: 18rem;
+      flex: 1 1 calc(100% - 10.5rem);
+   }
+
+   .cta-actions {
+      width: 15rem;
+      margin-left: auto;
+   }
+}
+
+@media (min-width: 64rem) and (max-width: 79.999rem) {
+   .cta-card {
+      gap: 1.25rem;
+   }
+
+   .cta-content {
+      min-width: 0;
+   }
+
+   .cta-content h2 {
+      white-space: normal;
+   }
+}
+
+@media (min-width: 80rem) {
+   .cta-card {
+      gap: 2rem;
+   }
+
+   .cta-content h2 {
+      white-space: nowrap;
+   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+   .cta-actions .btn {
+      transition: none;
+   }
+
+   .cta-actions .btn:hover {
+      transform: none;
+   }
+}
