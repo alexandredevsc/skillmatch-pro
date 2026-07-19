@@ -1800,7 +1800,8 @@ img {
 
    .profile-card,
    .best-match-card {
-      height: 100%;
+      height: auto;
+      align-self: stretch;
    }
 
    .match-heading h2 {
