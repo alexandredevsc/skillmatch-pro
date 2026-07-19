@@ -1,4 +1,5 @@
 const CAMINHO_VAGAS = "./assets/dados/vagas.json";
+const CAMINHO_CURSOS = "./assets/dados/cursos.json";
 const CHAVE_PERFIL = "skillmatch-pro:perfil";
 
 /**
@@ -24,6 +25,26 @@ export async function carregarVagas(fetchFn = fetch) {
     const detalhe = erro instanceof Error ? erro.message : "erro desconhecido";
 
     throw new Error(`Não foi possível carregar as vagas: ${detalhe}`);
+  }
+}
+
+export async function carregarCursos(fetchFn = fetch) {
+  try {
+    const resposta = await fetchFn(CAMINHO_CURSOS);
+
+    if (!resposta.ok) {
+      throw new Error(`Falha HTTP ${resposta.status}`);
+    }
+
+    const cursos = await resposta.json();
+    if (!Array.isArray(cursos)) {
+      throw new TypeError("O catálogo de cursos precisa ser uma lista.");
+    }
+
+    return cursos;
+  } catch (erro) {
+    const detalhe = erro instanceof Error ? erro.message : "erro desconhecido";
+    throw new Error(`Não foi possível carregar os cursos: ${detalhe}`);
   }
 }
 
@@ -68,4 +89,4 @@ export function removerPerfil(storage = localStorage) {
   storage.removeItem(CHAVE_PERFIL);
 }
 
-export { CAMINHO_VAGAS, CHAVE_PERFIL };
+export { CAMINHO_CURSOS, CAMINHO_VAGAS, CHAVE_PERFIL };

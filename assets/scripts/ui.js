@@ -216,6 +216,107 @@ export function renderizarMelhorCompatibilidade(resultado, elementos) {
   bestMatchDetails.dataset.vagaId = resultado.vaga.id;
 }
 
+export function criarCardCurso(curso, documento = document) {
+  const nivel = curso.recomendacao >= 90
+    ? "is-highly-recommended"
+    : "is-medium-recommended";
+  const card = criarElemento("article", ["course-card", nivel], "", documento);
+  card.dataset.cursoId = curso.id;
+
+  const cabecalho = criarElemento("header", ["course-card-header"], "", documento);
+  const icone = criarElemento(
+    "span",
+    ["course-icon", `is-${curso.tema}`],
+    curso.icone,
+    documento,
+  );
+  icone.setAttribute("aria-hidden", "true");
+  const titulos = criarElemento("div", ["course-heading-group"], "", documento);
+  titulos.append(
+    criarElemento("h3", ["course-title"], curso.titulo, documento),
+    criarElemento("p", ["course-description"], curso.descricao, documento),
+  );
+  cabecalho.append(icone, titulos);
+
+  const metadados = criarElemento("ul", ["course-meta"], "", documento);
+  const criarMeta = (simbolo, texto) => {
+    const item = criarElemento("li", ["course-meta-item"], "", documento);
+    const iconeMeta = criarElemento(
+      "span",
+      ["course-meta-icon"],
+      simbolo,
+      documento,
+    );
+    iconeMeta.setAttribute("aria-hidden", "true");
+    item.append(iconeMeta, documento.createTextNode(texto));
+    return item;
+  };
+  metadados.append(
+    criarMeta("◉", curso.plataforma),
+    criarMeta("◷", curso.duracao),
+  );
+  const avaliacao = criarElemento("li", ["course-rating"], "", documento);
+  const estrela = criarElemento("span", [], "★", documento);
+  estrela.setAttribute("aria-hidden", "true");
+  avaliacao.append(
+    estrela,
+    documento.createTextNode(curso.avaliacao.toLocaleString("pt-BR")),
+  );
+  metadados.append(avaliacao);
+
+  const recomendacao = criarElemento(
+    "div",
+    ["course-recommendation"],
+    "",
+    documento,
+  );
+  recomendacao.append(
+    criarElemento(
+      "span",
+      ["course-recommendation-label"],
+      "Recomendação",
+      documento,
+    ),
+    criarElemento(
+      "strong",
+      ["course-recommendation-value"],
+      `${curso.recomendacao}% recomendado`,
+      documento,
+    ),
+  );
+
+  const progresso = criarElemento("progress", ["course-progress"], "", documento);
+  progresso.max = 100;
+  progresso.value = curso.recomendacao;
+  progresso.setAttribute("aria-label", `${curso.recomendacao}% recomendado`);
+  card.append(cabecalho, metadados, recomendacao, progresso);
+  return card;
+}
+
+export function renderizarCursos(cursos, elementos, habilidadePrioritaria = null) {
+  const { coursesContainer, coursesStatus } = elementos;
+  const documento = coursesContainer.ownerDocument;
+  coursesContainer.replaceChildren();
+  coursesContainer.setAttribute("aria-busy", "false");
+
+  if (!cursos.length) {
+    atualizarEstado(coursesStatus, "Nenhum curso disponível no momento.", "is-empty");
+    return;
+  }
+
+  const prioridade = String(habilidadePrioritaria ?? "").toLocaleLowerCase("pt-BR");
+  const ordenados = [...cursos].sort((cursoA, cursoB) => {
+    const aPrioritario = cursoA.habilidade.toLocaleLowerCase("pt-BR") === prioridade;
+    const bPrioritario = cursoB.habilidade.toLocaleLowerCase("pt-BR") === prioridade;
+    return Number(bPrioritario) - Number(aPrioritario);
+  });
+
+  const fragmento = documento.createDocumentFragment();
+  ordenados.forEach((curso) => fragmento.append(criarCardCurso(curso, documento)));
+  coursesContainer.append(fragmento);
+  atualizarEstado(coursesStatus, "");
+}
+
 export function exibirErroFormulario(elemento, mensagem = "") {
   elemento.textContent = mensagem;
   elemento.hidden = !mensagem;

@@ -1,10 +1,16 @@
-import { carregarPerfil, carregarVagas, salvarPerfil } from "./dados.js";
+import {
+  carregarCursos,
+  carregarPerfil,
+  carregarVagas,
+  salvarPerfil,
+} from "./dados.js";
 import { analisarPerfil, criarCatalogo } from "./motor.js";
 import {
   atualizarEstado,
   exibirErroFormulario,
   obterElementosUI,
   preencherFormulario,
+  renderizarCursos,
   renderizarMelhorCompatibilidade,
   renderizarVagas,
 } from "./ui.js";
@@ -106,19 +112,20 @@ function configurarDetalhes(elementos) {
   });
 }
 
-function executarAnalise(perfil, catalogo, elementos) {
+function executarAnalise(perfil, catalogo, cursos, elementos) {
   const analise = analisarPerfil(perfil, catalogo, (resultado) => {
     renderizarMelhorCompatibilidade(resultado.melhorResultado, elementos);
     renderizarVagas(resultado.resultados, elementos, {
       melhorId: resultado.melhorResultado?.vaga.id,
     });
+    renderizarCursos(cursos, elementos, resultado.recomendacao.habilidade);
   });
 
   atualizarBotoesCarrossel(elementos);
   return analise;
 }
 
-function configurarFormulario(catalogo, elementos) {
+function configurarFormulario(catalogo, cursos, elementos) {
   elementos.profileForm.addEventListener("input", () => {
     exibirErroFormulario(elementos.formError);
     salvarPerfil(criarPerfilDoFormulario(elementos));
@@ -136,7 +143,7 @@ function configurarFormulario(catalogo, elementos) {
 
     exibirErroFormulario(elementos.formError);
     salvarPerfil(perfil);
-    executarAnalise(perfil, catalogo, elementos);
+    executarAnalise(perfil, catalogo, cursos, elementos);
     elementos.bestMatchContent.scrollIntoView({
       behavior: "smooth",
       block: "center",
@@ -150,19 +157,23 @@ export async function iniciarAplicacao(documento = document) {
   configurarDetalhes(elementos);
 
   try {
-    const catalogo = criarCatalogo(await carregarVagas());
+    const [dadosDasVagas, cursos] = await Promise.all([
+      carregarVagas(),
+      carregarCursos(),
+    ]);
+    const catalogo = criarCatalogo(dadosDasVagas);
     renderizarVagas(catalogo, elementos);
     atualizarBotoesCarrossel(elementos);
-    configurarFormulario(catalogo, elementos);
+    configurarFormulario(catalogo, cursos, elementos);
 
     const perfilSalvo = carregarPerfil();
     if (perfilSalvo) {
       preencherFormulario(perfilSalvo, elementos);
       const erro = validarPerfil(perfilSalvo);
-      if (!erro) executarAnalise(perfilSalvo, catalogo, elementos);
+      if (!erro) executarAnalise(perfilSalvo, catalogo, cursos, elementos);
     }
 
-    return { catalogo, elementos };
+    return { catalogo, cursos, elementos };
   } catch (erro) {
     elementos.jobsContainer.setAttribute("aria-busy", "false");
     atualizarEstado(
