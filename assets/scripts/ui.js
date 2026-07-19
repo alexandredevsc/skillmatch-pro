@@ -393,11 +393,19 @@ export function prepararPainelHero(documento = document) {
   painel.setAttribute("aria-live", "polite");
   painel.setAttribute("aria-label", "Resultado atual da análise");
 
+  const saudacao = criarElemento("div", ["hero-live-welcome"], "", documento);
+  saudacao.append(
+    criarElemento("span", [], "Olá!", documento),
+    criarElemento("strong", ["hero-live-name"], "Seu resultado está pronto", documento),
+    criarElemento("small", [], "Veja sua melhor oportunidade", documento),
+  );
+
   const texto = criarElemento("div", ["hero-dashboard-copy"], "", documento);
   texto.append(
     criarElemento("span", [], "Compatibilidade", documento),
     criarElemento("strong", ["hero-live-percent"], "96%", documento),
     criarElemento("small", ["hero-live-points"], "De 100 pontos", documento),
+    criarElemento("strong", ["hero-live-job"], "Sua vaga ideal", documento),
   );
 
   const barras = criarElemento("div", ["hero-live-bars"], "", documento);
@@ -414,11 +422,26 @@ export function prepararPainelHero(documento = document) {
     criarElemento("span", ["hero-live-check"], "✓", documento),
     criarElemento("strong", ["hero-live-level"], "Excelente", documento),
   );
-  painel.append(texto, indicador);
+  const recomendacao = criarElemento(
+    "div",
+    ["hero-live-recommendation"],
+    "",
+    documento,
+  );
+  recomendacao.append(
+    criarElemento(
+      "span",
+      ["hero-live-recommendation-title"],
+      "Recomendações para evoluir ainda mais",
+      documento,
+    ),
+    criarElemento("div", ["hero-live-recommendation-list"], "", documento),
+  );
+  painel.append(saudacao, texto, indicador, recomendacao);
   heroVisual.append(painel);
 }
 
-export function atualizarPainelHero(analise, documento = document) {
+export function atualizarPainelHero(analise, documento = document, cursos = []) {
   const melhor = analise.melhorResultado;
   if (!melhor) return;
 
@@ -435,20 +458,64 @@ export function atualizarPainelHero(analise, documento = document) {
   const pontosHero = documento.querySelector(".hero-live-points");
   const nivelHero = documento.querySelector(".hero-live-level");
   const indicadorHero = documento.querySelector(".hero-live-gauge");
+  const nomeHero = documento.querySelector(".hero-live-name");
+  const vagaHero = documento.querySelector(".hero-live-job");
+  const listaDeRecomendacoes = documento.querySelector(
+    ".hero-live-recommendation-list",
+  );
+  const primeiroNome = analise.perfil.nome.trim().split(/\s+/)[0];
+  nomeHero.textContent = `Olá, ${primeiroNome}!`;
   percentualHero.textContent = `${percentual}%`;
   pontosHero.textContent = `${melhor.encontradas.length} de ${melhor.vaga.requisitos.length} requisitos`;
   nivelHero.textContent = melhor.classificacao;
+  vagaHero.textContent = `${melhor.vaga.cargo} • ${melhor.vaga.empresa}`;
+  listaDeRecomendacoes.replaceChildren();
+  cursos.forEach((curso) => {
+    const card = criarElemento("span", ["hero-live-course"], "", documento);
+    card.append(
+      criarElemento("strong", [], curso.habilidade, documento),
+      criarElemento("small", [], `${curso.recomendacao}%`, documento),
+    );
+    listaDeRecomendacoes.append(card);
+  });
   indicadorHero.style.setProperty("--hero-match", `${percentual * 3.6}deg`);
+
+  const recomendacoesParaEvoluir = [
+    analise.recomendacao.habilidade,
+    ...melhor.faltantes,
+    ...analise.resultados.flatMap((resultado) => resultado.faltantes),
+  ].filter((habilidade, indice, lista) => {
+    if (!habilidade) return false;
+    const chave = habilidade.toLocaleLowerCase("pt-BR");
+    return lista.findIndex((item) =>
+      item?.toLocaleLowerCase("pt-BR") === chave
+    ) === indice;
+  }).slice(0, 3);
+
+  const cursosRecomendados = cursos.map(
+    (curso) => `${curso.habilidade} ${curso.recomendacao}%`,
+  );
+  const listaCompactaDeCursos = cursosRecomendados
+    .map((curso) => `• ${curso}`)
+    .join("\n");
 
   const valores = [
     resultadosCompativeis.length,
     empresasCompativeis.size,
-    12530 + analise.totalAnalisesSessao,
+    cursosRecomendados.length
+      ? listaCompactaDeCursos
+      : recomendacoesParaEvoluir.length
+        ? recomendacoesParaEvoluir.map((habilidade) => `• ${habilidade}`).join("\n")
+      : "Perfil completo",
   ];
   const formatador = new Intl.NumberFormat("pt-BR");
   documento.querySelectorAll(".hero-stat strong").forEach((elemento, indice) => {
-    elemento.textContent = formatador.format(valores[indice]);
+    elemento.textContent = typeof valores[indice] === "number"
+      ? formatador.format(valores[indice])
+      : valores[indice];
   });
+  const terceiroRotulo = documento.querySelector(".hero-stat-three span");
+  if (terceiroRotulo) terceiroRotulo.textContent = "Recomendações para evoluir";
 }
 
 export function exibirErroFormulario(elemento, mensagem = "") {

@@ -140,6 +140,40 @@ function configurarTema(elementos) {
   });
 }
 
+function configurarMenuMobile(documento) {
+  const botao = documento.getElementById("navToggle");
+  const menu = documento.getElementById("navMenu");
+  if (!botao || !menu) return;
+
+  const fecharMenu = () => {
+    menu.classList.remove("is-open");
+    botao.setAttribute("aria-expanded", "false");
+    botao.setAttribute("aria-label", "Abrir menu principal");
+  };
+
+  botao.addEventListener("click", () => {
+    const aberto = botao.getAttribute("aria-expanded") === "true";
+    menu.classList.toggle("is-open", !aberto);
+    botao.setAttribute("aria-expanded", String(!aberto));
+    botao.setAttribute(
+      "aria-label",
+      aberto ? "Abrir menu principal" : "Fechar menu principal",
+    );
+  });
+
+  menu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", fecharMenu);
+  });
+
+  documento.addEventListener("keydown", (evento) => {
+    if (evento.key === "Escape") fecharMenu();
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 832) fecharMenu();
+  });
+}
+
 function configurarNewsletter(elementos) {
   elementos.newsletterForm.addEventListener("submit", (evento) => {
     evento.preventDefault();
@@ -176,7 +210,7 @@ function executarAnalise(perfil, catalogo, cursos, elementos) {
       melhorId: resultado.melhorResultado?.vaga.id,
     });
     renderizarCursos(cursos, elementos, resultado.recomendacao.habilidade);
-    atualizarPainelHero(resultado, elementos.profileForm.ownerDocument);
+    atualizarPainelHero(resultado, elementos.profileForm.ownerDocument, cursos);
   });
 
   atualizarBotoesCarrossel(elementos);
@@ -212,6 +246,7 @@ function configurarFormulario(catalogo, cursos, elementos) {
 export async function iniciarAplicacao(documento = document) {
   const elementos = obterElementosUI(documento);
   prepararPainelHero(documento);
+  configurarMenuMobile(documento);
   configurarTema(elementos);
   configurarCarrossel(elementos);
   configurarDetalhes(elementos);
