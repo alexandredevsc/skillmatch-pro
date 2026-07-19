@@ -1,8 +1,10 @@
 import {
   carregarCursos,
   carregarPerfil,
+  carregarTema,
   carregarVagas,
   salvarPerfil,
+  salvarTema,
 } from "./dados.js";
 import { analisarPerfil, criarCatalogo } from "./motor.js";
 import {
@@ -112,6 +114,59 @@ function configurarDetalhes(elementos) {
   });
 }
 
+function aplicarTema(tema, elementos) {
+  const documento = elementos.themeToggle.ownerDocument;
+  const escuro = tema === "dark";
+  documento.documentElement.dataset.theme = tema;
+  elementos.themeToggle.setAttribute("aria-pressed", String(escuro));
+  elementos.themeToggle.setAttribute(
+    "aria-label",
+    escuro ? "Ativar tema claro" : "Ativar tema escuro",
+  );
+  const corDoNavegador = documento.querySelector('meta[name="theme-color"]');
+  if (corDoNavegador) corDoNavegador.content = escuro ? "#050816" : "#f7f9fd";
+}
+
+function configurarTema(elementos) {
+  aplicarTema(carregarTema(), elementos);
+  elementos.themeToggle.addEventListener("click", () => {
+    const temaAtual =
+      elementos.themeToggle.ownerDocument.documentElement.dataset.theme;
+    const novoTema = temaAtual === "dark" ? "light" : "dark";
+    aplicarTema(novoTema, elementos);
+    salvarTema(novoTema);
+  });
+}
+
+function configurarNewsletter(elementos) {
+  elementos.newsletterForm.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+    elementos.newsletterMessage.classList.remove("is-error");
+
+    if (!elementos.newsletterEmail.validity.valid) {
+      elementos.newsletterMessage.textContent = "Informe um e-mail válido.";
+      elementos.newsletterMessage.classList.add("is-error");
+      elementos.newsletterEmail.focus();
+      return;
+    }
+
+    elementos.newsletterMessage.textContent =
+      "Cadastro realizado! Você receberá novas oportunidades.";
+    elementos.newsletterForm.reset();
+  });
+}
+
+function configurarCursos(elementos) {
+  elementos.viewAllCourses.addEventListener("click", () => {
+    elementos.coursesContainer.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+    elementos.coursesContainer.setAttribute("tabindex", "-1");
+    elementos.coursesContainer.focus({ preventScroll: true });
+  });
+}
+
 function executarAnalise(perfil, catalogo, cursos, elementos) {
   const analise = analisarPerfil(perfil, catalogo, (resultado) => {
     renderizarMelhorCompatibilidade(resultado.melhorResultado, elementos);
@@ -153,8 +208,11 @@ function configurarFormulario(catalogo, cursos, elementos) {
 
 export async function iniciarAplicacao(documento = document) {
   const elementos = obterElementosUI(documento);
+  configurarTema(elementos);
   configurarCarrossel(elementos);
   configurarDetalhes(elementos);
+  configurarNewsletter(elementos);
+  configurarCursos(elementos);
 
   try {
     const [dadosDasVagas, cursos] = await Promise.all([

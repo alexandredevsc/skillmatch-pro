@@ -345,8 +345,13 @@ export function obterElementosUI(documento = document) {
     "previousJobs",
     "nextJobs",
     "viewAllJobs",
+    "viewAllCourses",
     "coursesContainer",
     "coursesStatus",
+    "themeToggle",
+    "newsletterForm",
+    "newsletterEmail",
+    "newsletterMessage",
   ];
 
   return ids.reduce((elementos, id) => {

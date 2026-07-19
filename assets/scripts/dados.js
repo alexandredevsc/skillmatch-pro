@@ -1,6 +1,7 @@
 const CAMINHO_VAGAS = "./assets/dados/vagas.json";
 const CAMINHO_CURSOS = "./assets/dados/cursos.json";
 const CHAVE_PERFIL = "skillmatch-pro:perfil";
+const CHAVE_TEMA = "skillmatch-pro:tema";
 
 /**
  * Carrega o catálogo de vagas usando fetch e async/await.
@@ -89,4 +90,16 @@ export function removerPerfil(storage = localStorage) {
   storage.removeItem(CHAVE_PERFIL);
 }
 
-export { CAMINHO_CURSOS, CAMINHO_VAGAS, CHAVE_PERFIL };
+export function salvarTema(tema, storage = localStorage) {
+  if (!["light", "dark"].includes(tema)) {
+    throw new TypeError("O tema precisa ser light ou dark.");
+  }
+  storage.setItem(CHAVE_TEMA, tema);
+}
+
+export function carregarTema(storage = localStorage) {
+  const tema = storage.getItem(CHAVE_TEMA);
+  return ["light", "dark"].includes(tema) ? tema : "light";
+}
+
+export { CAMINHO_CURSOS, CAMINHO_VAGAS, CHAVE_PERFIL, CHAVE_TEMA };

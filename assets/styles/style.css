@@ -3606,6 +3606,63 @@ img {
    color: #ff8795;
 }
 
+/* =========================================================
+   TEMA ESCURO — bônus persistido pelo JavaScript
+   O tema claro permanece como padrão do mockup.
+   ========================================================= */
+
+html[data-theme="dark"] {
+   color-scheme: dark;
+}
+
+html[data-theme="dark"] .steps-section,
+html[data-theme="dark"] .analysis-section,
+html[data-theme="dark"] .jobs-section,
+html[data-theme="dark"] .courses-section,
+html[data-theme="dark"] .cta-section {
+   color: #eef4ff;
+   background-color: #071126;
+}
+
+html[data-theme="dark"] .profile-card,
+html[data-theme="dark"] .best-match-card,
+html[data-theme="dark"] .job-card,
+html[data-theme="dark"] .course-card,
+html[data-theme="dark"] .match-preview {
+   color: #eaf1ff;
+   border-color: #24375d;
+   background: #0c1933;
+}
+
+html[data-theme="dark"] .card-heading h2,
+html[data-theme="dark"] .match-heading h2,
+html[data-theme="dark"] .job-company,
+html[data-theme="dark"] .course-title,
+html[data-theme="dark"] .job-skills-title {
+   color: #f4f7ff;
+}
+
+html[data-theme="dark"] .card-heading p,
+html[data-theme="dark"] .job-role,
+html[data-theme="dark"] .job-detail,
+html[data-theme="dark"] .course-description,
+html[data-theme="dark"] .course-meta-item,
+html[data-theme="dark"] .course-recommendation-label,
+html[data-theme="dark"] .empty-result {
+   color: #aab9d5;
+}
+
+html[data-theme="dark"] .profile-form input,
+html[data-theme="dark"] .profile-form select {
+   color: #eef4ff;
+   border-color: #2b416b;
+   background: #101f3d;
+}
+
+html[data-theme="dark"] .profile-form input::placeholder {
+   color: #8393b2;
+}
+
 .newsletter-message:empty {
    min-height: 0;
    margin-top: 0;
