@@ -9,9 +9,11 @@ import {
 import { analisarPerfil, criarCatalogo } from "./motor.js";
 import {
   atualizarEstado,
+  atualizarPainelHero,
   exibirErroFormulario,
   obterElementosUI,
   preencherFormulario,
+  prepararPainelHero,
   renderizarCursos,
   renderizarMelhorCompatibilidade,
   renderizarVagas,
@@ -174,6 +176,7 @@ function executarAnalise(perfil, catalogo, cursos, elementos) {
       melhorId: resultado.melhorResultado?.vaga.id,
     });
     renderizarCursos(cursos, elementos, resultado.recomendacao.habilidade);
+    atualizarPainelHero(resultado, elementos.profileForm.ownerDocument);
   });
 
   atualizarBotoesCarrossel(elementos);
@@ -208,6 +211,7 @@ function configurarFormulario(catalogo, cursos, elementos) {
 
 export async function iniciarAplicacao(documento = document) {
   const elementos = obterElementosUI(documento);
+  prepararPainelHero(documento);
   configurarTema(elementos);
   configurarCarrossel(elementos);
   configurarDetalhes(elementos);

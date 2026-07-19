@@ -385,6 +385,72 @@ export function renderizarCursos(cursos, elementos, habilidadePrioritaria = null
   atualizarEstado(coursesStatus, "");
 }
 
+export function prepararPainelHero(documento = document) {
+  const heroVisual = documento.querySelector(".hero-visual");
+  if (!heroVisual || heroVisual.querySelector(".hero-dashboard-live")) return;
+
+  const painel = criarElemento("div", ["hero-dashboard-live"], "", documento);
+  painel.setAttribute("aria-live", "polite");
+  painel.setAttribute("aria-label", "Resultado atual da análise");
+
+  const texto = criarElemento("div", ["hero-dashboard-copy"], "", documento);
+  texto.append(
+    criarElemento("span", [], "Compatibilidade", documento),
+    criarElemento("strong", ["hero-live-percent"], "96%", documento),
+    criarElemento("small", ["hero-live-points"], "De 100 pontos", documento),
+  );
+
+  const barras = criarElemento("div", ["hero-live-bars"], "", documento);
+  [42, 58, 72, 88, 65].forEach((altura) => {
+    const barra = criarElemento("span", [], "", documento);
+    barra.style.height = `${altura}%`;
+    barras.append(barra);
+  });
+  texto.append(barras);
+
+  const indicador = criarElemento("div", ["hero-live-gauge"], "", documento);
+  indicador.style.setProperty("--hero-match", "345.6deg");
+  indicador.append(
+    criarElemento("span", ["hero-live-check"], "✓", documento),
+    criarElemento("strong", ["hero-live-level"], "Excelente", documento),
+  );
+  painel.append(texto, indicador);
+  heroVisual.append(painel);
+}
+
+export function atualizarPainelHero(analise, documento = document) {
+  const melhor = analise.melhorResultado;
+  if (!melhor) return;
+
+  prepararPainelHero(documento);
+  const percentual = melhor.percentual;
+  const resultadosCompativeis = analise.resultados.filter(
+    (resultado) => resultado.percentual >= 50,
+  );
+  const empresasCompativeis = new Set(
+    resultadosCompativeis.map((resultado) => resultado.vaga.empresa),
+  );
+
+  const percentualHero = documento.querySelector(".hero-live-percent");
+  const pontosHero = documento.querySelector(".hero-live-points");
+  const nivelHero = documento.querySelector(".hero-live-level");
+  const indicadorHero = documento.querySelector(".hero-live-gauge");
+  percentualHero.textContent = `${percentual}%`;
+  pontosHero.textContent = `${melhor.encontradas.length} de ${melhor.vaga.requisitos.length} requisitos`;
+  nivelHero.textContent = melhor.classificacao;
+  indicadorHero.style.setProperty("--hero-match", `${percentual * 3.6}deg`);
+
+  const valores = [
+    resultadosCompativeis.length,
+    empresasCompativeis.size,
+    12530 + analise.totalAnalisesSessao,
+  ];
+  const formatador = new Intl.NumberFormat("pt-BR");
+  documento.querySelectorAll(".hero-stat strong").forEach((elemento, indice) => {
+    elemento.textContent = formatador.format(valores[indice]);
+  });
+}
+
 export function exibirErroFormulario(elemento, mensagem = "") {
   elemento.textContent = mensagem;
   elemento.hidden = !mensagem;
