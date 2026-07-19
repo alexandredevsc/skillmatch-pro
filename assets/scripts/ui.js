@@ -206,14 +206,82 @@ export function renderizarMelhorCompatibilidade(resultado, elementos) {
     return;
   }
 
-  bestMatchContent.append(
-    criarCardVaga(resultado, {
-      documento: bestMatchContent.ownerDocument,
-      melhorVaga: true,
-    }),
+  const documento = bestMatchContent.ownerDocument;
+  const { vaga } = resultado;
+  const painel = criarElemento("div", ["match-result"], "", documento);
+  const resumo = criarElemento("div", ["match-score-panel"], "", documento);
+  const circulo = criarElemento("div", ["match-score-circle"], "", documento);
+  circulo.style.setProperty("--match-value", `${resultado.percentual * 3.6}deg`);
+  circulo.setAttribute(
+    "aria-label",
+    `${resultado.percentual}% de compatibilidade`,
   );
+  circulo.append(
+    criarElemento(
+      "strong",
+      ["match-score-value"],
+      `${resultado.percentual}%`,
+      documento,
+    ),
+  );
+  resumo.append(
+    circulo,
+    criarElemento("span", ["match-score-label"], "Compatibilidade", documento),
+    criarElemento(
+      "strong",
+      ["match-score-classification"],
+      resultado.classificacao,
+      documento,
+    ),
+  );
+
+  const conteudo = criarElemento("div", ["match-result-content"], "", documento);
+  const cabecalho = criarElemento("header", ["match-company-header"], "", documento);
+  const logo = criarElemento("span", ["job-company-logo", "is-blue"], vaga.sigla, documento);
+  logo.setAttribute("aria-hidden", "true");
+  const titulos = criarElemento("div", ["match-company-titles"], "", documento);
+  titulos.append(
+    criarElemento("p", ["match-company-name"], vaga.empresa, documento),
+    criarElemento("h3", ["match-company-role"], vaga.cargo, documento),
+  );
+  cabecalho.append(
+    logo,
+    titulos,
+    criarElemento("span", ["job-contract-badge"], vaga.contrato, documento),
+  );
+
+  const detalhes = criarElemento("ul", ["job-details"], "", documento);
+  detalhes.append(
+    criarDetalhe("⌖", vaga.localizacao, documento),
+    criarDetalhe("◷", vaga.modalidade, documento),
+    criarDetalhe("$", formatarSalario(vaga.salario), documento),
+  );
+  const habilidades = criarElemento("div", ["match-skills"], "", documento);
+  if (resultado.encontradas.length) {
+    habilidades.append(
+      criarGrupoHabilidades(
+        "Habilidades que você possui",
+        resultado.encontradas,
+        "is-matched",
+        documento,
+      ),
+    );
+  }
+  if (resultado.faltantes.length) {
+    habilidades.append(
+      criarGrupoHabilidades(
+        "Habilidades que pode desenvolver",
+        resultado.faltantes,
+        "is-missing",
+        documento,
+      ),
+    );
+  }
+  conteudo.append(cabecalho, detalhes, habilidades);
+  painel.append(resumo, conteudo);
+  bestMatchContent.append(painel);
   bestMatchDetails.disabled = false;
-  bestMatchDetails.dataset.vagaId = resultado.vaga.id;
+  bestMatchDetails.dataset.vagaId = vaga.id;
 }
 
 export function criarCardCurso(curso, documento = document) {
