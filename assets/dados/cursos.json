@@ -1,0 +1,50 @@
+[
+  {
+    "id": "javascript-completo",
+    "titulo": "JavaScript Completo",
+    "descricao": "Do básico ao avançado",
+    "habilidade": "JavaScript",
+    "plataforma": "Udemy",
+    "duracao": "20h",
+    "avaliacao": 4.9,
+    "recomendacao": 95,
+    "icone": "JS",
+    "tema": "javascript"
+  },
+  {
+    "id": "react-zero-maestria",
+    "titulo": "React do Zero à Maestria",
+    "descricao": "Hooks, Context e Projetos",
+    "habilidade": "React",
+    "plataforma": "Udemy",
+    "duracao": "20h",
+    "avaliacao": 4.8,
+    "recomendacao": 90,
+    "icone": "⚛",
+    "tema": "react"
+  },
+  {
+    "id": "typescript-avancado",
+    "titulo": "TypeScript Avançado",
+    "descricao": "Domine o TypeScript",
+    "habilidade": "TypeScript",
+    "plataforma": "Alura",
+    "duracao": "16h",
+    "avaliacao": 4.9,
+    "recomendacao": 95,
+    "icone": "TS",
+    "tema": "typescript"
+  },
+  {
+    "id": "ui-ux-design-moderno",
+    "titulo": "UI/UX Design Moderno",
+    "descricao": "Interfaces que convertem",
+    "habilidade": "UI/UX",
+    "plataforma": "Coursera",
+    "duracao": "15h",
+    "avaliacao": 4.7,
+    "recomendacao": 85,
+    "icone": "◉",
+    "tema": "design"
+  }
+]
