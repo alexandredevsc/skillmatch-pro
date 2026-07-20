@@ -36,6 +36,7 @@ Projeto avaliativo do Módulo 1 do curso de Desenvolvimento Web Front-End, desen
 - Persistência com `localStorage` e JSON.
 - Git e GitHub com branches e commits descritivos.
 
+
 ## Estrutura do projeto
 
 ```text
@@ -48,6 +49,25 @@ skillmatch-pro/
     │   ├── cursos.json
     │   └── vagas.json
     ├── img/
+    │   ├── cta/
+    │   │   └── rocket.png
+    │   ├── hero/
+    │   │   ├── icon-companies-3d.png
+    │   │   ├── icon-jobs-3d.png
+    │   │   ├── icon-recommendation-3d.png
+    │   │   ├── icon-target.png
+    │   │   ├── icon-user.png
+    │   │   ├── neon-ring.png
+    │   │   ├── notebook.png
+    │   │   └── notebook-dynamic-cropped.png
+    │   ├── logo/
+    │   │   ├── footer-logo-white.svg
+    │   │   ├── logo-skillmatch.png
+    │   │   └── logo-skillmatch-mockup.png
+    │   └── steps/
+    │       ├── brain.png
+    │       ├── clipboard.png
+    │       └── target.png
     ├── scripts/
     │   ├── dados.js
     │   ├── main.js
@@ -116,13 +136,34 @@ A página utiliza landmarks semânticos, um único `h1`, labels associados aos c
 
 ## Versionamento
 
-O desenvolvimento utiliza a branch `develop` para integração e feature branches para cada etapa, incluindo estrutura, HTML semântico, seções de CSS e JavaScript. Os commits seguem mensagens curtas e descritivas.
+O projeto utiliza Git e GitHub com uma branch para cada etapa do desenvolvimento:
+
+- `main`: versão estável destinada à entrega final.
+- `develop`: integração das funcionalidades concluídas.
+- `feature/estrutura-projeto`: criação inicial das pastas e arquivos.
+- `feature/html-semantico`: construção da estrutura semântica da página.
+- `feature/html-revisao`: revisão e correções do HTML.
+- `feature/css-base`: estilização do cabeçalho e da seção principal.
+- `feature/css-como-funciona`: estilização da seção Como Funciona.
+- `feature/css-analise`: estilização do formulário e do resultado da análise.
+- `feature/css-vagas`: estilização da seção de oportunidades.
+- `feature/css-cursos`: estilização das recomendações de cursos.
+- `feature/css-cta`: estilização da chamada final.
+- `feature/css-footer`: estilização do rodapé.
+- `feature/js-dados`: implementação das funcionalidades JavaScript, análise de compatibilidade, interface dinâmica e persistência no `localStorage`.
+- `fix/css-flexbox-audit`: correções identificadas durante a auditoria do CSS.
+- `audit/html-css-requisitos`: revisão do atendimento aos requisitos de HTML e CSS.
+
+As branches concluídas são integradas à `develop` por meio de Pull Requests. Depois da revisão final, a `develop` será integrada à `main`.
+
+Os commits seguem mensagens curtas e descritivas, utilizando padrões como `feat`, `fix`, `style`, `refactor` e `docs`.
 
 Repositório: [github.com/alexandredevsc/skillmatch-pro](https://github.com/alexandredevsc/skillmatch-pro)
 
+
 ## Organização do projeto
 
-- Quadro Kanban/Trello: **[adicionar link público antes da entrega]**
+- Quadro Kanban/Trello: https://trello.com/b/kgVWXyD3/skillmatch-pro-projeto-avaliativo-senai-sc-tech
 - Aplicação publicada: **[adicionar link do GitHub Pages após publicar]**
 - Vídeo de apresentação: **[adicionar link público ou não listado antes da entrega]**
 
@@ -132,7 +173,6 @@ A IA foi utilizada como ferramenta de apoio para criação e revisão visual, ge
 
 ## Melhorias futuras
 
-- Publicar a aplicação no GitHub Pages.
 - Adicionar filtros de modalidade, salário e compatibilidade.
 - Criar testes automatizados para o motor de compatibilidade.
 - Executar auditorias periódicas com Lighthouse.
