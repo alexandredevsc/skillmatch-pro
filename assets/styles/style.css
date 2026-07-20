@@ -3239,6 +3239,7 @@ img {
    font-size: 0.63rem;
    line-height: 1.45;
    -webkit-box-orient: vertical;
+   line-clamp: 2;
    -webkit-line-clamp: 2;
 }
 
