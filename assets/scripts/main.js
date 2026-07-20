@@ -75,6 +75,50 @@ function deslocamentoDoCarrossel(container) {
   return primeiroCard.getBoundingClientRect().width + gap;
 }
 
+function atualizarListaRecolhivel({
+  container,
+  botao,
+  seletor,
+  expandida = false,
+  textoExpandir,
+  textoRecolher,
+}) {
+  const cards = [...container.querySelectorAll(seletor)];
+  cards.forEach((card, indice) => {
+    card.hidden = !expandida && indice > 0;
+  });
+
+  botao.hidden = cards.length <= 1;
+  botao.setAttribute("aria-expanded", String(expandida));
+  botao.textContent = expandida ? textoRecolher : textoExpandir;
+  container.classList.toggle("is-expanded", expandida);
+
+  if (!expandida) container.scrollLeft = 0;
+}
+
+function atualizarVisibilidadeVagas(elementos, expandida = false) {
+  atualizarListaRecolhivel({
+    container: elementos.jobsContainer,
+    botao: elementos.viewAllJobs,
+    seletor: ".job-card",
+    expandida,
+    textoExpandir: "Ver todas as vagas",
+    textoRecolher: "Mostrar menos vagas",
+  });
+  atualizarBotoesCarrossel(elementos);
+}
+
+function atualizarVisibilidadeCursos(elementos, expandida = false) {
+  atualizarListaRecolhivel({
+    container: elementos.coursesContainer,
+    botao: elementos.viewAllCourses,
+    seletor: ".course-card",
+    expandida,
+    textoExpandir: "Ver todos os cursos",
+    textoRecolher: "Mostrar menos cursos",
+  });
+}
+
 function configurarCarrossel(elementos) {
   const { jobsContainer, previousJobs, nextJobs, viewAllJobs } = elementos;
 
@@ -93,8 +137,9 @@ function configurarCarrossel(elementos) {
   });
 
   viewAllJobs.addEventListener("click", () => {
+    const expandida = viewAllJobs.getAttribute("aria-expanded") !== "true";
+    atualizarVisibilidadeVagas(elementos, expandida);
     jobsContainer.scrollIntoView({ behavior: "smooth", block: "center" });
-    jobsContainer.focus({ preventScroll: true });
   });
 
   jobsContainer.addEventListener("scroll", () => {
@@ -196,12 +241,13 @@ function configurarNewsletter(elementos) {
 
 function configurarCursos(elementos) {
   elementos.viewAllCourses.addEventListener("click", () => {
+    const expandida =
+      elementos.viewAllCourses.getAttribute("aria-expanded") !== "true";
+    atualizarVisibilidadeCursos(elementos, expandida);
     elementos.coursesContainer.scrollIntoView({
       behavior: "smooth",
       block: "center",
     });
-    elementos.coursesContainer.setAttribute("tabindex", "-1");
-    elementos.coursesContainer.focus({ preventScroll: true });
   });
 }
 
@@ -212,10 +258,11 @@ function executarAnalise(perfil, catalogo, cursos, elementos) {
       melhorId: resultado.melhorResultado?.vaga.id,
     });
     renderizarCursos(cursos, elementos, resultado.recomendacao.habilidade);
+    atualizarVisibilidadeVagas(elementos);
+    atualizarVisibilidadeCursos(elementos);
     atualizarPainelHero(resultado, elementos.profileForm.ownerDocument, cursos);
   });
 
-  atualizarBotoesCarrossel(elementos);
   return analise;
 }
 
@@ -254,9 +301,9 @@ function configurarFormulario(catalogo, cursos, elementos) {
       catalogo,
     );
     renderizarVagas(catalogo, elementos);
-    elementos.jobsContainer.scrollLeft = 0;
-    atualizarBotoesCarrossel(elementos);
+    atualizarVisibilidadeVagas(elementos);
     elementos.coursesContainer.replaceChildren();
+    atualizarVisibilidadeCursos(elementos);
     atualizarEstado(
       elementos.coursesStatus,
       "Preencha seu perfil para receber recomendações de estudo.",
@@ -284,7 +331,7 @@ export async function iniciarAplicacao(documento = document) {
     const catalogo = criarCatalogo(dadosDasVagas);
     restaurarPainelHero(documento, catalogo);
     renderizarVagas(catalogo, elementos);
-    atualizarBotoesCarrossel(elementos);
+    atualizarVisibilidadeVagas(elementos);
     configurarFormulario(catalogo, cursos, elementos);
 
     const perfilSalvo = carregarPerfil();
