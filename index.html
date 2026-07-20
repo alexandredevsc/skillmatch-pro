@@ -54,6 +54,8 @@
   </head>
 
   <body>
+    <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
+
     <!-- ========================================= -->
     <!-- HEADER / MENU PRINCIPAL -->
     <!-- ========================================= -->
@@ -124,7 +126,7 @@
     <!-- CONTEÚDO PRINCIPAL -->
     <!-- ========================================= -->
 
-    <main>
+    <main id="conteudo-principal">
       <!-- ========================================= -->
       <!-- HERO -->
       <!-- ========================================= -->
@@ -377,6 +379,7 @@
                 id="bestMatchDetails"
                 class="details-button"
                 type="button"
+                aria-controls="bestMatchContent"
                 disabled
               >
                 Ver detalhes da vaga
@@ -499,6 +502,7 @@
             role="region"
             aria-label="Lista de cursos recomendados"
             aria-busy="false"
+            tabindex="0"
           >
             <!--
               Os cards dos cursos serão criados
