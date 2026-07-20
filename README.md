@@ -164,7 +164,7 @@ Repositório: [github.com/alexandredevsc/skillmatch-pro](https://github.com/alex
 ## Organização do projeto
 
 - Quadro Kanban/Trello: https://trello.com/b/kgVWXyD3/skillmatch-pro-projeto-avaliativo-senai-sc-tech
-- Aplicação publicada: **[adicionar link do GitHub Pages após publicar]**
+- Aplicação publicada: https://alexandredevsc.github.io/skillmatch-pro/
 - Vídeo de apresentação: **[adicionar link público ou não listado antes da entrega]**
 
 ## Uso de inteligência artificial
