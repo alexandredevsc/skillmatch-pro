@@ -891,9 +891,9 @@ img {
 }
 
 .hero-benefits {
-   display: grid;
+   display: flex;
    width: min(29rem, 100%);
-   grid-template-columns: repeat(2, minmax(0, 1fr));
+   flex-wrap: wrap;
    gap: 0.9rem 1.25rem;
    margin: 2.25rem 0 0;
    color: #c5ccda;
@@ -902,6 +902,8 @@ img {
 
 .hero-benefits li {
    display: inline-flex;
+   width: calc(50% - 0.625rem);
+   flex: 0 0 calc(50% - 0.625rem);
    align-items: center;
    white-space: normal;
 }
