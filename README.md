@@ -16,6 +16,7 @@ Projeto avaliativo do Módulo 1 do curso de Desenvolvimento Web Front-End, desen
 - Catálogo carregado de arquivos JSON utilizando `fetch` e `async/await`.
 - Tratamento dos estados de carregamento, lista vazia e erro.
 - Perfil e preferência de tema armazenados no `localStorage`.
+- Limpeza completa do perfil, dos resultados e dos dados armazenados.
 - Tema claro/escuro persistente.
 - Menu mobile acessível e layout responsivo.
 - Navegação por teclado, foco visível e regiões com `aria-live`.

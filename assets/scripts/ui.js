@@ -387,9 +387,17 @@ export function renderizarCursos(cursos, elementos, habilidadePrioritaria = null
 
 export function prepararPainelHero(documento = document) {
   const heroVisual = documento.querySelector(".hero-visual");
-  if (!heroVisual || heroVisual.querySelector(".hero-dashboard-live")) return;
+  if (!heroVisual) return;
 
-  const painel = criarElemento("div", ["hero-dashboard-live"], "", documento);
+  const painelExistente = heroVisual.querySelector(".hero-dashboard-live");
+  if (painelExistente && !painelExistente.classList.contains("is-welcome")) {
+    return;
+  }
+
+  const painel = painelExistente
+    ?? criarElemento("div", ["hero-dashboard-live"], "", documento);
+  painel.replaceChildren();
+  painel.classList.remove("is-welcome");
   painel.setAttribute("aria-live", "polite");
   painel.setAttribute("aria-label", "Resultado atual da análise");
 
@@ -438,7 +446,52 @@ export function prepararPainelHero(documento = document) {
     criarElemento("div", ["hero-live-recommendation-list"], "", documento),
   );
   painel.append(saudacao, texto, indicador, recomendacao);
-  heroVisual.append(painel);
+  if (!painelExistente) heroVisual.append(painel);
+}
+
+export function restaurarPainelHero(documento = document, catalogo = []) {
+  prepararPainelHero(documento);
+  const painel = documento.querySelector(".hero-dashboard-live");
+  if (!painel) return;
+
+  painel.replaceChildren(
+    criarElemento(
+      "strong",
+      ["hero-live-reset-title"],
+      "Seja bem-vindo",
+      documento,
+    ),
+  );
+  painel.classList.add("is-welcome");
+  painel.setAttribute("aria-label", "Seja bem-vindo ao SkillMatch Pro");
+
+  const empresas = new Set(catalogo.map((vaga) => vaga.empresa));
+  const dadosIniciais = [
+    ["Vagas disponíveis", catalogo.length || "—"],
+    ["Empresas parceiras", empresas.size || "—"],
+    ["Recomendações", "Preencha o perfil"],
+  ];
+
+  documento.querySelectorAll(".hero-stat").forEach((card, indice) => {
+    const [rotulo, valor] = dadosIniciais[indice];
+    card.querySelector("span").textContent = rotulo;
+    card.querySelector("strong").textContent = String(valor);
+  });
+}
+
+export function restaurarResultadoAnalise(elementos) {
+  const { bestMatchContent, bestMatchDetails } = elementos;
+  const documento = bestMatchContent.ownerDocument;
+  bestMatchContent.replaceChildren(
+    criarElemento(
+      "p",
+      ["empty-result"],
+      "Preencha seu perfil para descobrir a vaga mais compatível.",
+      documento,
+    ),
+  );
+  bestMatchDetails.disabled = true;
+  bestMatchDetails.removeAttribute("data-vaga-id");
 }
 
 export function atualizarPainelHero(analise, documento = document, cursos = []) {
@@ -538,6 +591,7 @@ export function obterElementosUI(documento = document) {
     "area",
     "experiencia",
     "habilidades",
+    "clearProfile",
     "formError",
     "bestMatchContent",
     "bestMatchDetails",

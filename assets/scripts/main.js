@@ -3,6 +3,7 @@ import {
   carregarPerfil,
   carregarTema,
   carregarVagas,
+  removerPerfil,
   salvarPerfil,
   salvarTema,
 } from "./dados.js";
@@ -13,10 +14,11 @@ import {
   exibirErroFormulario,
   obterElementosUI,
   preencherFormulario,
-  prepararPainelHero,
   renderizarCursos,
   renderizarMelhorCompatibilidade,
   renderizarVagas,
+  restaurarPainelHero,
+  restaurarResultadoAnalise,
 } from "./ui.js";
 
 export function separarHabilidades(valor) {
@@ -241,11 +243,32 @@ function configurarFormulario(catalogo, cursos, elementos) {
       block: "center",
     });
   });
+
+  elementos.clearProfile.addEventListener("click", () => {
+    elementos.profileForm.reset();
+    removerPerfil();
+    exibirErroFormulario(elementos.formError);
+    restaurarResultadoAnalise(elementos);
+    restaurarPainelHero(
+      elementos.profileForm.ownerDocument,
+      catalogo,
+    );
+    renderizarVagas(catalogo, elementos);
+    elementos.jobsContainer.scrollLeft = 0;
+    atualizarBotoesCarrossel(elementos);
+    elementos.coursesContainer.replaceChildren();
+    atualizarEstado(
+      elementos.coursesStatus,
+      "Preencha seu perfil para receber recomendações de estudo.",
+      "is-waiting",
+    );
+    elementos.nome.focus();
+  });
 }
 
 export async function iniciarAplicacao(documento = document) {
   const elementos = obterElementosUI(documento);
-  prepararPainelHero(documento);
+  restaurarPainelHero(documento);
   configurarMenuMobile(documento);
   configurarTema(elementos);
   configurarCarrossel(elementos);
@@ -259,6 +282,7 @@ export async function iniciarAplicacao(documento = document) {
       carregarCursos(),
     ]);
     const catalogo = criarCatalogo(dadosDasVagas);
+    restaurarPainelHero(documento, catalogo);
     renderizarVagas(catalogo, elementos);
     atualizarBotoesCarrossel(elementos);
     configurarFormulario(catalogo, cursos, elementos);
