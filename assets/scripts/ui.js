@@ -174,8 +174,15 @@ export function renderizarVagas(itens, elementos, opcoes = {}) {
   }
 
   const melhorId = opcoes.melhorId;
+  const ordenados = melhorId
+    ? [...itens].sort((itemA, itemB) => {
+      const vagaA = itemA.vaga ?? itemA;
+      const vagaB = itemB.vaga ?? itemB;
+      return Number(vagaB.id === melhorId) - Number(vagaA.id === melhorId);
+    })
+    : itens;
   const fragmento = documento.createDocumentFragment();
-  itens.forEach((item) => {
+  ordenados.forEach((item) => {
     const vaga = item.vaga ?? item;
     fragmento.append(
       criarCardVaga(item, {
