@@ -1,0 +1,116 @@
+[
+  {
+    "id": "tech-solutions-front-junior",
+    "empresa": "Tech Solutions",
+    "sigla": "TS",
+    "cargo": "Desenvolvedor Front-end Júnior",
+    "area": "front-end",
+    "senioridade": "Júnior",
+    "experienciaMinimaMeses": 12,
+    "requisitos": ["HTML", "CSS", "JavaScript", "Git", "React", "SASS"],
+    "habilidadesDesejaveis": ["TypeScript", "Next.js", "Testes", "UI/UX"],
+    "salario": {
+      "minimo": 4000,
+      "maximo": 6000,
+      "moeda": "BRL"
+    },
+    "modalidade": "Híbrido",
+    "localizacao": "Florianópolis, SC",
+    "contrato": "CLT"
+  },
+  {
+    "id": "devweb-front-pleno",
+    "empresa": "DevWeb",
+    "sigla": "DW",
+    "cargo": "Desenvolvedor Front-end Pleno",
+    "area": "front-end",
+    "senioridade": "Pleno",
+    "experienciaMinimaMeses": 36,
+    "requisitos": ["HTML", "CSS", "JavaScript", "React", "Git", "Testes"],
+    "habilidadesDesejaveis": ["TypeScript", "SASS", "Acessibilidade"],
+    "salario": {
+      "minimo": 3500,
+      "maximo": 5000,
+      "moeda": "BRL"
+    },
+    "modalidade": "Remoto",
+    "localizacao": "Florianópolis, SC",
+    "contrato": "PJ"
+  },
+  {
+    "id": "pixel-labs-ui-ux",
+    "empresa": "Pixel Labs",
+    "sigla": "PL",
+    "cargo": "Designer UI/UX",
+    "area": "ui-ux",
+    "senioridade": "Pleno",
+    "experienciaMinimaMeses": 24,
+    "requisitos": ["Figma", "UI/UX", "Prototipação", "Design System"],
+    "habilidadesDesejaveis": ["HTML", "CSS", "Acessibilidade", "Pesquisa com Usuários"],
+    "salario": {
+      "minimo": 3800,
+      "maximo": 5500,
+      "moeda": "BRL"
+    },
+    "modalidade": "Híbrido",
+    "localizacao": "São Paulo, SP",
+    "contrato": "CLT"
+  },
+  {
+    "id": "inovatech-front-developer",
+    "empresa": "Inovatech",
+    "sigla": "IT",
+    "cargo": "Front-end Developer",
+    "area": "front-end",
+    "senioridade": "Pleno",
+    "experienciaMinimaMeses": 30,
+    "requisitos": ["HTML", "CSS", "JavaScript", "Vue.js", "Git"],
+    "habilidadesDesejaveis": ["TypeScript", "Testes", "APIs REST"],
+    "salario": {
+      "minimo": 4200,
+      "maximo": 6500,
+      "moeda": "BRL"
+    },
+    "modalidade": "Presencial",
+    "localizacao": "Curitiba, PR",
+    "contrato": "CLT"
+  },
+  {
+    "id": "cloudnine-fullstack-junior",
+    "empresa": "CloudNine",
+    "sigla": "CN",
+    "cargo": "Desenvolvedor Full Stack Júnior",
+    "area": "fullstack",
+    "senioridade": "Júnior",
+    "experienciaMinimaMeses": 12,
+    "requisitos": ["HTML", "CSS", "JavaScript", "Node.js", "Git", "APIs REST"],
+    "habilidadesDesejaveis": ["React", "SQL", "Testes"],
+    "salario": {
+      "minimo": 4500,
+      "maximo": 6200,
+      "moeda": "BRL"
+    },
+    "modalidade": "Remoto",
+    "localizacao": "Brasil",
+    "contrato": "CLT"
+  },
+  {
+    "id": "nexcode-fullstack-senior",
+    "empresa": "NexCode",
+    "sigla": "NC",
+    "cargo": "Desenvolvedor Full Stack Sênior",
+    "area": "fullstack",
+    "senioridade": "Sênior",
+    "experienciaMinimaMeses": 72,
+    "requisitos": ["JavaScript", "TypeScript", "React", "Node.js", "SQL", "Testes", "Git"],
+    "habilidadesDesejaveis": ["Docker", "Cloud", "CI/CD", "Arquitetura de Software"],
+    "salario": {
+      "minimo": 9000,
+      "maximo": 13000,
+      "moeda": "BRL"
+    },
+    "modalidade": "Híbrido",
+    "localizacao": "São Paulo, SP",
+    "contrato": "PJ"
+  }
+]
