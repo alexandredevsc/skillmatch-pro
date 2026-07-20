@@ -321,7 +321,7 @@ img {
 .brand-logo {
    width: clamp(17rem, 21vw, 25rem);
    height: auto;
-   margin-left: -7rem;
+   margin-left: 0;
 }
 
 .nav-menu {
@@ -1359,6 +1359,10 @@ img {
       width: 100%;
       min-height: 38rem;
    }
+
+   .hero-icon-user {
+      display: none;
+   }
 }
 
 @media (max-width: 40rem) {
@@ -1984,6 +1988,21 @@ img {
    min-width: 0;
    flex: 1 1 0;
    margin-top: 0;
+   color: #ffffff;
+   border-color: #475569;
+   background: linear-gradient(135deg, #020617, #1e293b);
+   box-shadow: 0 0.55rem 1.2rem rgba(2, 6, 23, 0.3);
+}
+
+.profile-form-actions .btn:hover {
+   border-color: #60a5fa;
+   background: linear-gradient(135deg, #0f172a, #27364d);
+   box-shadow: 0 0.7rem 1.5rem rgba(2, 6, 23, 0.4);
+}
+
+.profile-form-actions .btn:active {
+   transform: translateY(0);
+   background: #020617;
 }
 
 .form-error {
@@ -2447,6 +2466,11 @@ img {
    min-width: min(85vw, 20rem);
    flex: 0 0 min(85vw, 20rem);
    scroll-snap-align: start;
+}
+
+.jobs-grid > .job-card[hidden],
+.courses-list > .course-card[hidden] {
+   display: none;
 }
 
 .jobs-status[hidden],
@@ -4306,6 +4330,18 @@ html[data-theme="dark"] .steps-section .section-header p {
    color: #ffffff;
 }
 
+/* Preserva o contraste das mensagens exibidas sobre fundos claros. */
+html[data-theme="dark"] .analysis-section .form-error {
+   color: #9f1239;
+   border-color: #fecdd3;
+   background: #fff1f2;
+}
+
+html[data-theme="dark"] .analysis-section .form-message {
+   color: #087455;
+   background: #ecfdf5;
+}
+
 .newsletter-message:empty {
    min-height: 0;
    margin-top: 0;
@@ -4351,6 +4387,52 @@ html[data-theme="dark"] .steps-section .section-header p {
       text-align: right;
    }
 
+}
+
+/* =========================================================
+   IDENTIDADE VISUAL GLOBAL DOS BOTÕES
+   ========================================================= */
+
+.btn,
+.profile-form-actions .btn,
+.details-button,
+.view-all-button,
+.carousel-button,
+.theme-toggle,
+.nav-toggle,
+.newsletter-field button {
+   color: #ffffff;
+   border-color: #2563eb;
+   background: linear-gradient(135deg, #02040b 0%, #071a3d 52%, #0b3a75 100%);
+   box-shadow:
+      0 0.55rem 1.25rem rgba(2, 6, 23, 0.32),
+      inset 0 0 0.75rem rgba(37, 99, 235, 0.1);
+}
+
+.btn:hover,
+.profile-form-actions .btn:hover,
+.details-button:not(:disabled):hover,
+.view-all-button:hover,
+.carousel-button:not(:disabled):hover,
+.theme-toggle:hover,
+.nav-toggle:hover,
+.newsletter-field button:hover {
+   color: #ffffff;
+   border-color: #60a5fa;
+   background: linear-gradient(135deg, #030712 0%, #0a2552 50%, #0d4b92 100%);
+   box-shadow:
+      0 0.7rem 1.5rem rgba(2, 6, 23, 0.42),
+      0 0 1rem rgba(37, 99, 235, 0.22);
+}
+
+.details-button:disabled,
+.carousel-button:disabled {
+   color: #ffffff;
+   border-color: #1e3a5f;
+   background: linear-gradient(135deg, #080c16, #102441);
+   box-shadow: none;
+   cursor: not-allowed;
+   opacity: 0.62;
 }
 
 @media (prefers-reduced-motion: reduce) {
