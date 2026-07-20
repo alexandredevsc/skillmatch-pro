@@ -4289,6 +4289,22 @@ html[data-theme="dark"] .profile-form input::placeholder {
    color: #8393b2;
 }
 
+/* Mantém textos originalmente escuros legíveis quando as seções mudam de tema. */
+html[data-theme="dark"] :where(
+   .steps-section,
+   .analysis-section,
+   .jobs-section,
+   .courses-section,
+   .cta-section
+) :where(h1, h2, h3, h4, p, label, legend) {
+   color: #ffffff;
+}
+
+html[data-theme="dark"] .steps-section .section-header h2,
+html[data-theme="dark"] .steps-section .section-header p {
+   color: #ffffff;
+}
+
 .newsletter-message:empty {
    min-height: 0;
    margin-top: 0;
